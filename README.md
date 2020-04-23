@@ -10,11 +10,16 @@ Si el usuario solo guarda en el blockchain debe guardar la identificación de la
 El usuario puede guardar un hash solo una vez. ( no se permite guardar el mismo hash dos veces en una tabla)
 ### Parameteros
 **usuario** = `{{ usuario }}`, Cuenta que ejecuta la acción y guarda el hash del contenido.
+
 **hash** = `{{ hash }}`, Identificador criptográfico SHA-256 calculado de un archivo o de algún texto.
-**guardar_en_tabla** = `{{ guardar_en_tabla }}`, Si es igual a verdadero o 1 guarda el hash y la identificación de la transacción en la tabla `libro`. Este registro será guardado en memoria RAM por lo que debe ser pagado por el ejecutor de la acción y podría liberarse si es necesario. (opcional)
-**comentario** = `{{ comentario }}`, 
-utilizado como descripción o resumen.
+
+**guardar_en_tabla** = `{{ guardar_en_tabla }}`, Si es igual a verdadero o 1 guarda el hash y la identificación de la 
+transacción en la tabla `libro`. Este registro será guardado en memoria RAM por lo que debe ser pagado por el ejecutor de la acción y podría liberarse si es necesario. (opcional)
+
+**comentario** = `{{ comentario }}`, utilizado como descripción o resumen.
+
 **contenido** = `{{ contenido }}`, Se utiliza opcionalmente para cargar un archivo sin formato o contenido de texto libre. tenga en cuenta que esto no se verifica con el hash.
+
 ## Acción - `{{ limpiar }}`
 ### Descripción
 Esta acción borra lo registros de la tabla y debe usarse para desarrollo 
