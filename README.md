@@ -1,11 +1,13 @@
 # NOTAREOS
 # Notario Digital para Blockchain EOSIO 
 Este contrato inteligente sirve como herramienta para un usuario que desee registrar la existencia de documentos digitales (textos / imágenes) en un momento determinado del tiempo.
+
 También permite a cualquier persona que posea el documento validar el registro en la cadena de bloques.
+
 ## Acción - `{{ anotar }}`
 ### Descripción
 La intención de la acción `{{anotar}}` es probar la existencia de un hash SHA-256 en una fecha y hora específicas y también quien ejecuta esta acción. 
-Los datos se almacenan en la cadena de bloques, opcionalmente los datos se pueden guardar en una tabla de memoria RAM, lo cual tiene un costo pero facilita la recuperación de datos.
+Los datos se almacenan en la cadena de bloques, opcionalmente los datos se pueden guardar en una tabla de memoria RAM, lo cual tiene un costo pero facilita la recuperación de datos al facilitar el acceso a la transacción.
 Si el usuario solo guarda en el blockchain debe guardar la identificación de la transacción para recuperarla si es necesario.
 El usuario puede guardar un hash solo una vez. ( no se permite guardar el mismo hash dos veces en una tabla)
 ### Parameteros
@@ -27,5 +29,6 @@ Esta acción borra lo registros de la tabla y debe usarse para desarrollo
 ### Descripción 
 Tabla que contiene aquellos registros que están disponibles en RAM.
 ### Campos
-- id *(indice primario)*
-- hash *(indice secundario)*
+- **id** *(indice primario)* Identificador de registro en la tabla.
+- **hash** *(indice secundario)* SHA256 del contenido .
+- **tx** Identificador de la transacción en blockchain para recuperar los detalles del registro.
