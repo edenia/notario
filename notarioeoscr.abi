@@ -40,6 +40,10 @@
                 {
                     "name": "hash",
                     "type": "checksum256"
+                },
+                {
+                    "name": "tx",
+                    "type": "checksum256"
                 }
             ]
         },

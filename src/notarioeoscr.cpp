@@ -1,6 +1,6 @@
 #include <notarioeoscr.hpp>
-#include <cmath>
-#include <eosio/system.hpp>
+#include <eosio/transaction.hpp>
+#include <eosio/crypto.hpp>
 
 ACTION notarioeoscr::anotar(name usuario, const checksum256 &hash, bool guardar_en_tabla, string comentario, string contenido) {
   require_auth(usuario);
@@ -16,9 +16,14 @@ ACTION notarioeoscr::anotar(name usuario, const checksum256 &hash, bool guardar_
   auto by_hash_itr = by_hash.find(hash);
   check(by_hash_itr == by_hash.end(), "Hash ya existente");
 
+  auto s = eosio::read_transaction(nullptr, 0);
+  char *tx = (char *)malloc(s);
+  read_transaction(tx, s);
+  auto txid = sha256(tx, s);
   _records.emplace(usuario, [&](auto& row) {
     row.id = _records.available_primary_key();
     row.hash = hash;
+    row.tx = txid;
   });
 }
 
