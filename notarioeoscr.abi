@@ -20,11 +20,15 @@
                     "type": "bool"
                 },
                 {
-                    "name": "comentario",
+                    "name": "titulo",
                     "type": "string"
                 },
                 {
                     "name": "contenido",
+                    "type": "string"
+                },
+                {
+                    "name": "comentario",
                     "type": "string"
                 }
             ]
