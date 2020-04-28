@@ -32,3 +32,8 @@ Tabla que contiene aquellos registros que están disponibles en RAM.
 - **id** *(indice primario)* Identificador de registro en la tabla.
 - **hash** *(indice secundario)* SHA256 del contenido .
 - **tx** Identificador de la transacción en blockchain para recuperar los detalles del registro.
+
+
+## Subir el contrato al `jungletestnet`
+
+`cleos -u https://jungle.eosio.cr set contract notarioeoscr ./ -p notarioeoscr@active`
