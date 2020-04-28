@@ -35,6 +35,6 @@ Tabla que contiene aquellos registros que están disponibles en RAM.
 - **tx** Identificador de la transacción en blockchain para recuperar los detalles del registro.
 
 
-## Subir el contrato al `jungletestnet`
+## Subir el contrato al Jungle Testnet
 
 `cleos -u https://jungle.eosio.cr set contract notarioeoscr ./ -p notarioeoscr@active`
