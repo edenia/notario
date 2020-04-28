@@ -1,4 +1,5 @@
-# NOTAREOS
+# NOTARIOEOSCR
+
 # Notario Digital para Blockchain EOSIO 
 Este contrato inteligente sirve como herramienta para un usuario que desee registrar la existencia de documentos digitales (textos / imágenes) en un momento determinado del tiempo.
 
