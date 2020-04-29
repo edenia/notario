@@ -1,0 +1,18 @@
+{
+  "name": "notarioeoscr",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:eoscostarica/notareos.git",
+  "author": "Ruben <rubenabix@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "eosjs": "20.0.0",
+    "json": "^9.0.6",
+    "mocha": "^7.1.2",
+    "node-fetch": "^2.6.0"
+  },
+  "scripts": {
+    "test": "npx env-cmd -f .env mocha **/*.spec.js -t 50000"
+  }
+}
