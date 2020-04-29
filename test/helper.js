@@ -26,7 +26,7 @@ const rpc = new JsonRpc(
 )
 
 const signatureProvider = new JsSignatureProvider([
-  '5KNkEbk8oESBzPKQbnEXFtXZaQRxTKncB9aPDon1kV42ab3WBpz',
+  '5JtUScZK2XEp3g9gh7F8bwtPTRAkASmNrrftmx4AxDKD5K4zDnr', // bob
 ])
 
 const eos = new Api({
