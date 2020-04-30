@@ -1,9 +1,10 @@
 var expect = require('chai').expect
 
-const { Api, JsonRpc } = require('eosjs')
+const { Api, JsonRpc, RpcError } = require('eosjs')
 const { JsSignatureProvider } = require('eosjs/dist/eosjs-jssig') // development only
 const fetch = require('node-fetch') // node only
 const { TextDecoder, TextEncoder } = require('util') // node only
+const SHA256 = require("crypto-js/sha256")
 
 const privateKeys = [process.env.PVK]
 
@@ -16,58 +17,46 @@ const api = new Api({
   textEncoder: new TextEncoder(),
 })
 
-describe('Global eos', () => {
-  it('is an object', () => {
-    expect(eos).to.be.an('object')
-  })
-
-  it(`can get chain info and chainId is ${process.env.EOSIO_CHAIN_ID}`, async () => {
-    const chainInfo = await eos.rpc.get_info({})
-    expect(chainInfo).to.be.an('object')
-    expect(chainInfo.chain_id).to.equal(process.env.EOSIO_CHAIN_ID)
-  })
-
-  it('can get account "eosio"', async () => {
-    const eosioAccount = await eos.rpc.get_account('eosio')
-    expect(eosioAccount.account_name).to.equal('eosio')
-  })
-})
+const contractName = 'notarioeoscr'
+const testAccountName = 'notariotest1'
 
 describe('notarioeoscr', () => {
   it(`can get rows`, async () => {
-    const resp = await eos.rpc.get_table_rows({
-      json: true, // Get the response as json
-      code: 'notarioeoscr', // Contract that we target
-      scope: 'notarioeoscr', // Account that owns the data
-      table: 'libro', // Table name
-      limit: 10, // Maximum number of rows that we want to get
-      reverse: false, // Optional: Get reversed data
-      show_payer: false, // Optional: Show ram payer
+    const resp = await rpc.get_table_rows({
+      json: true,
+      code: contractName,
+      scope: contractName,
+      table: 'libro',
+      limit: 10,
+      reverse: false,
+      show_payer: false
     })
-    console.log(resp.rows)
     expect(resp.rows).to.be.an('array')
   })
-  it(`can send action anotar`, async () => {
+
+  let content = `TEST + ${new Date().getTime()}`
+  let testHash1 = SHA256(content).toString()
+  it(`can send action anotar with content ${content} and hash ${testHash1}`, async () => {
+    let error
     try {
       const result = await api.transact(
         {
           actions: [
             {
-              account: 'notarioeoscr',
+              account: contractName,
               name: 'anotar',
               authorization: [
                 {
-                  actor: 'notariotest1',
+                  actor: testAccountName,
                   permission: 'active',
                 },
               ],
               data: {
-                usuario: 'notariotest1',
-                hash:
-                  'a0ccb78ba8f1e4bb1e6ff48e1af2029275de2490cce96e3f73eebca009e5649b',
+                usuario: testAccountName,
+                hash: testHash1,
                 guardar_en_tabla: true,
                 titulo: '',
-                contenido: '',
+                contenido: content,
                 comentario: '',
               },
             },
@@ -78,11 +67,46 @@ describe('notarioeoscr', () => {
           expireSeconds: 30,
         }
       )
-      console.log('result', result)
-    } catch (error) {
-      console.log('error', error)
+      expect(result).to.be.an('object')
+      expect(result).to.have.property('transaction_id');
+    } catch (e) {
+      error = e
     }
-    // console.log(resp.rows)
-    // expect(resp.rows).to.be.an('array')
+  })
+  it(`get error action anotar if content ${content} and hash ${testHash1} is duplicated`, async () => {
+    let error
+    try {
+      const result = await api.transact(
+        {
+          actions: [
+            {
+              account: contractName,
+              name: 'anotar',
+              authorization: [
+                {
+                  actor: testAccountName,
+                  permission: 'active',
+                },
+              ],
+              data: {
+                usuario: testAccountName,
+                hash: testHash1,
+                guardar_en_tabla: true,
+                titulo: '',
+                contenido: content,
+                comentario: '',
+              },
+            },
+          ],
+        },
+        {
+          blocksBehind: 3,
+          expireSeconds: 30,
+        }
+      )
+    } catch (e) {
+      error = e
+    }
+    expect(error).to.not.be.undefined
   })
 })

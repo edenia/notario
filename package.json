@@ -14,5 +14,8 @@
   },
   "scripts": {
     "test": "npx env-cmd -f .env mocha **/*.spec.js -t 50000"
+  },
+  "dependencies": {
+    "crypto-js": "^4.0.0"
   }
 }
