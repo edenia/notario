@@ -16,6 +16,7 @@
     "test": "npx env-cmd -f .env mocha **/*.spec.js -t 50000"
   },
   "dependencies": {
-    "crypto-js": "^4.0.0"
+    "crypto-js": "^4.0.0",
+    "ricardian-template-toolkit": "^0.2.1"
   }
 }

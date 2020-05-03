@@ -34,6 +34,11 @@ Tabla que contiene aquellos registros que están disponibles en RAM.
 - **hash** *(indice secundario)* SHA256 del contenido .
 - **tx** Identificador de la transacción en blockchain para recuperar los detalles del registro.
 
+## Compilación
+
+```
+eosio-cpp -abigen ./src/notarioeoscr.cpp -o notarioeoscr.wasm -I ./include/ -R ./ricardian
+```
 
 ## Subir el contrato al Jungle Testnet
 
