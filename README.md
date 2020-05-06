@@ -43,3 +43,6 @@ eosio-cpp -abigen ./src/notarioeoscr.cpp -o notarioeoscr.wasm -I ./include/ -R .
 ## Subir el contrato al Jungle Testnet
 
 `cleos -u https://jungle.eosio.cr set contract notarioeoscr ./ -p notarioeoscr@active`
+
+## Diseño de UI
+Pueden accesar el Zeplin scene aquí: https://scene.zeplin.io/project/5ea8f7f46cfde425751bc5ec
