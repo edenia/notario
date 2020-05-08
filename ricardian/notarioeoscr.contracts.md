@@ -1,13 +1,13 @@
 <h1 class="contract">anotar</h1>
 ---
-spec-version: 0.2.0
-title: Create new community
-summary: Creates a new community on BeSpiral. It requires you to send: `cmm_asset`, `creator`, `logo`, `name`, `description`, `inviter_reward` and `invited_reward`. A BeSpiral community is closelly tied to a BeSpiral Token. A community allows a group of people with common goals and objectives to connect and allow the creation of incentives to reach those objectives. It also help to buy and sell products
+spec-version: 0.1.0
+title: Save hash proof
+summary: The intent of the `{{ anotar }}` action is to prove existence of a SHA-256 hash at a specific date and time and also which account executes this action. This data will be persisted as a blockchain transaction so it is necessary for users to save the transaction id to retrieve the hash proof.
 icon:
 
 <h1 class="contract">limpiar</h1>
 ---
-spec-version: 0.2.0
-title: Update some information about a community
-summary: Update information on a existing community on BeSpiral. It requires you to send: `cmm_asset`, `logo`, `name`, `description`, `inviter_reward` and `invited_reward`. All information will be saved, with the exception of the asset that cannot be changed
+spec-version: 0.1.0
+title: Clear table
+summary: The intent of the `{{ limpiar }}` action is to delete all table records and is used for development purposes on test-nets and must not be published to mainnet.
 icon:
