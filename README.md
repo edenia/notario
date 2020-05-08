@@ -1,9 +1,15 @@
-# NOTARIOEOSCR
+
 
 # Notario Digital para Blockchain EOSIO 
 Este contrato inteligente sirve como herramienta para un usuario que desee registrar la existencia de documentos digitales (textos / imágenes) en un momento determinado del tiempo.
 
 También permite a cualquier persona que posea el documento validar el registro en la cadena de bloques.
+
+## Diseño de UI
+Pueden accesar el Zeplin scene aquí: https://scene.zeplin.io/project/5ea8f7f46cfde425751bc5ec
+
+
+# NOTARIOEOSCR
 
 ## Acción - `{{ anotar }}`
 ### Descripción
@@ -44,5 +50,8 @@ eosio-cpp -abigen ./src/notarioeoscr.cpp -o notarioeoscr.wasm -I ./include/ -R .
 
 `cleos -u https://jungle.eosio.cr set contract notarioeoscr ./ -p notarioeoscr@active`
 
-## Diseño de UI
-Pueden accesar el Zeplin scene aquí: https://scene.zeplin.io/project/5ea8f7f46cfde425751bc5ec
+## Creditos
+
+
+Este contrato esta basado en [EOS Proof of Existence](https://github.com/EOSArgentina/eosproofio) publicado por [EOS Argentina](https://www.eosargentina.io/)
+
