@@ -1,57 +1,124 @@
+# EOSCR Web App Boilerplate
 
+[![N|Solid](https://github.com/eoscostarica/eos-rate/raw/master/docs/eoscostarica-logo-black.png)](https://eoscostarica.io/)
 
-# Notario Digital para Blockchain EOSIO 
-Este contrato inteligente sirve como herramienta para un usuario que desee registrar la existencia de documentos digitales (textos / imágenes) en un momento determinado del tiempo.
+![](https://img.shields.io/github/license/eoscostarica/webapp-boilerplate) ![](https://img.shields.io/badge/code%20style-standard-brightgreen.svg) ![](https://img.shields.io/badge/%E2%9C%93-collaborative_etiquette-brightgreen.svg) ![](https://img.shields.io/twitter/follow/eoscostarica.svg?style=social&logo=twitter) ![](https://img.shields.io/github/forks/eoscostarica/webapp-boilerplate?style=social)
 
-También permite a cualquier persona que posea el documento validar el registro en la cadena de bloques.
+A highly scalable skeleton with best practices, ideal for React Web App projects quick start
 
-## Diseño de UI
-Pueden accesar el Zeplin scene aquí: https://scene.zeplin.io/project/5ea8f7f46cfde425751bc5ec
+## Version
 
+- 0.1.0
 
-# NOTARIOEOSCR
+# Features!
 
-## Acción - `{{ anotar }}`
-### Descripción
-La intención de la acción `{{anotar}}` es probar la existencia de un hash SHA-256 en una fecha y hora específicas y también quien ejecuta esta acción. 
-Los datos se almacenan en la cadena de bloques, opcionalmente los datos se pueden guardar en una tabla de memoria RAM, lo cual tiene un costo pero facilita la recuperación de datos al facilitar el acceso a la transacción.
-Si el usuario solo guarda en el blockchain debe guardar la identificación de la transacción para recuperarla si es necesario.
-El usuario puede guardar un hash solo una vez. ( no se permite guardar el mismo hash dos veces en una tabla)
-### Parameteros
-**usuario** = `{{ usuario }}`, Cuenta que ejecuta la acción y guarda el hash del contenido.
+This boilerplate features all the latest tools and practices in the industry.
 
-**hash** = `{{ hash }}`, Identificador criptográfico SHA-256 calculado de un archivo o de algún texto.
+- _React.js_ - **React 16**✨, React Router 5
+- _Rematch/core_ - Rematch a Redux Framework
+- _Material-ui/core_ - React components for faster and easier web development
+- _universal-authenticator-library_ - A library for allowing apps to easily use different auth providers (optional)
+- _Lint_ - ESlint
+- _Styles_ - Material-UI Theme (customizable)
 
-**guardar_en_tabla** = `{{ guardar_en_tabla }}`, Si es igual a verdadero o 1 guarda el hash y la identificación de la 
-transacción en la tabla `libro`. Este registro será guardado en memoria RAM por lo que debe ser pagado por el ejecutor de la acción y podría liberarse si es necesario. (opcional)
+## Installation
 
-**comentario** = `{{ comentario }}`, utilizado como descripción o resumen.
+### Before to start
 
-**contenido** = `{{ contenido }}`, Se utiliza opcionalmente para cargar un archivo sin formato o contenido de texto libre. tenga en cuenta que esto no se verifica con el hash.
+Somethings you need before getting started:
 
-## Acción - `{{ limpiar }}`
-### Descripción
-Esta acción borra lo registros de la tabla y debe usarse para desarrollo 
-## Tablas - `{{ Libro }}`
-### Descripción 
-Tabla que contiene aquellos registros que están disponibles en RAM.
-### Campos
-- **id** *(indice primario)* Identificador de registro en la tabla.
-- **hash** *(indice secundario)* SHA256 del contenido .
-- **tx** Identificador de la transacción en blockchain para recuperar los detalles del registro.
+- [git](https://git-scm.com/)
+- [node.js](https://nodejs.org/es/)
+- [yarn](https://yarnpkg.com/)
 
-## Compilación
+### First time
+
+Copy the `.env.example` then update the environment variables according to your needs
 
 ```
-eosio-cpp -abigen ./src/notarioeoscr.cpp -o notarioeoscr.wasm -I ./include/ -R ./ricardian
+cp .env.example .env
 ```
 
-## Subir el contrato al Jungle Testnet
+_If you want to the boilerplate using UAL login integration, please make sure that `REACT_APP_USE_UAL` env variable is set as true._
 
-`cleos -u https://jungle.eosio.cr set contract notarioeoscr ./ -p notarioeoscr@active`
+## Development
 
-## Creditos
+### Quick start
 
+1.  Clone this repo using `git clone --depth=1 https://github.com/eoscostarica/webapp-boilerplate.git <YOUR_PROJECT_NAME>`
+2.  Move to the appropriate directory: `cd <YOUR_PROJECT_NAME>`.
+3.  Run `yarn` in order to install dependencies.
+    _At this point you can run `yarn start` to see the example app at `http://localhost:3000`._
 
-Este contrato esta basado en [EOS Proof of Existence](https://github.com/EOSArgentina/eosproofio) publicado por [EOS Argentina](https://www.eosargentina.io/)
+## File Structure
 
+Within the download you'll find the following directories and files:
+
+```
+eoscrwebappboilerplate/
+├── public
+│   ├── index.html
+│   └── manifest.json
+├──  src
+│   ├── api
+│   ├── components
+│   ├── config
+│   ├── containers
+│   ├── models
+│   ├── routes
+│   ├── theme
+│   ├── utils
+│   ├── App.js
+│   ├── index.js
+│   └── store.js
+├── .dockerignore
+├── .gitignore
+├── .env.example
+├── .eslintrc
+├── .prettierrc
+├── Dockerfile
+├── LICENSE
+├── README.md
+├── docker-compose.yml
+├── nginx.conf
+└── package.json
+```
+
+## License
+
+MIT © [EOS Costa Rica](https://eoscostarica.io)
+
+## Contributing
+
+Please Read EOS Costa Rica's [Open Source Contributing Guidelines](https://developers.eoscostarica.io/docs/open-source-guidelines).
+
+Please report bugs big and small by [opening an issue](https://github.com/eoscostarica/webapp-boilerplate/issues)
+
+## Contributors
+
+Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
+
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/xavier506"><img src="https://avatars0.githubusercontent.com/u/5632966?v=4" width="100px;" alt="Xavier Fernandez"/><br /><sub><b>Xavier Fernandez</b></sub></a><br /><a href="#ideas-xavier506" title="Ideas, Planning, & Feedback">🤔</a> <a href="#blog-xavier506" title="Blogposts">📝</a> <a href="#talk-xavier506" title="Talks">📢</a> <a href="#infra-xavier506" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
+ <td align="center"><a href="https://github.com/tetogomez">
+      <img src="https://avatars3.githubusercontent.com/u/10634375?s=460&v=4" width="100px;" alt="Teto Gomez"/><br /><sub><b>Teto Gomez</b></sub></a><br /><a href="https://github.com/eoscostarica/eosrate/commits?author=tetogomez" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/eoscostarica/eosrate/commits?author=tetogomez" title="Code">💻</a> <a href="#review-tetogomez" title="Reviewed Pull Requests">👀</a></td>
+      <td align="center"><a href="https://github.com/adriexnet">
+      <img src="https://avatars3.githubusercontent.com/u/5375168?s=460&u=542a27a00b761d98851991c6a6d5f78d7b35a2b2&v=4" width="100px;" alt="Adriel Diaz"/><br /><sub><b>Adriel Diaz</b></sub></a><br /><a href="https://github.com/eoscostarica/eosrate/commits?author=adriexnet" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/eoscostarica/eosrate/commits?author=adriexnet" title="Code">💻</a> <a href="#review-adriexnet" title="Reviewed Pull Requests">👀</a></td>
+  </tr>
+</table>
+
+This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!
+
+## About EOS Costa Rica
+
+<p align="center">
+	<a href="https://eoscostarica.io">
+		<img src="https://github.com/eoscostarica/eos-rate/raw/master/docs/eoscostarica-logo-black.png" width="300">
+	</a>
+</p>
+<br/>
+
+EOS Costa Rica is an independently-owned, self-funded, bare-metal Genesis block producer that provides stable and secure infrastructure for EOSIO blockchains. We support open source software for our community while offering enterprise solutions and custom smart contract development for our clients.
+
+[eoscostarica.io](https://eoscostarica.io)
