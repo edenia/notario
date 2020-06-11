@@ -1,0 +1,11 @@
+{
+  "translations": {
+    "login": "Iniciar sesión",
+    "users": "Usuarios",
+    "products": "Productos",
+    "productsTitle": "Listado de productos",
+    "usersTitle": "Listado de usuarios",
+    "logout": "Salir",
+    "notary": "Una herramienta creada para notariar documentos digitales en el blockchain. Certificá documentos nuevos o validá certificaciones previas."
+  }
+}

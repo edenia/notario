@@ -4,7 +4,7 @@ const { Api, JsonRpc, RpcError } = require('eosjs')
 const { JsSignatureProvider } = require('eosjs/dist/eosjs-jssig') // development only
 const fetch = require('node-fetch') // node only
 const { TextDecoder, TextEncoder } = require('util') // node only
-const SHA256 = require("crypto-js/sha256")
+const SHA256 = require('crypto-js/sha256')
 
 const privateKeys = [process.env.PVK]
 
@@ -29,7 +29,7 @@ describe('notarioeoscr', () => {
       table: 'libro',
       limit: 10,
       reverse: false,
-      show_payer: false
+      show_payer: false,
     })
     expect(resp.rows).to.be.an('array')
   })
@@ -68,7 +68,7 @@ describe('notarioeoscr', () => {
         }
       )
       expect(result).to.be.an('object')
-      expect(result).to.have.property('transaction_id');
+      expect(result).to.have.property('transaction_id')
     } catch (e) {
       error = e
     }
