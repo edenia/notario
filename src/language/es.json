@@ -6,6 +6,19 @@
     "productsTitle": "Listado de productos",
     "usersTitle": "Listado de usuarios",
     "logout": "Salir",
-    "notary": "Una herramienta creada para notariar documentos digitales en el blockchain. Certificá documentos nuevos o validá certificaciones previas."
+    "notary": {
+      "text1": "Una herramienta creada para notariar documentos digitales en el blockchain.",
+      "text2": "Certificá documentos nuevos o validá certificaciones previas.",
+      "certifyButton": "Certificar Datos",
+      "verifyButton": "Validar Certificados",
+      "verifyModal": {
+        "title": "Validación de Certificados",
+        "paragraph": "Pegue el hash de su certificado o utilice la cámara para detectar un código QR.",
+        "qrButton": "Detectar QR"
+      },
+      "certifyMoval": {},
+      "cancelButton": "Cancelar",
+      "acceptButton": "Validar"
+    }
   }
 }
