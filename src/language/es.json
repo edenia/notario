@@ -16,7 +16,10 @@
         "paragraph": "Pegue el hash de su certificado o utilice la cámara para detectar un código QR.",
         "qrButton": "Detectar QR"
       },
-      "certifyMoval": {},
+      "certifyModal": {
+        "title": "Paso 1 de 2: Envío de Datos",
+        "paragraph": "Certificá datos ya sea en formato de texto o por medio de un archivo subido desde."
+      },
       "cancelButton": "Cancelar",
       "acceptButton": "Validar"
     }

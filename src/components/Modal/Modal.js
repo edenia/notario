@@ -81,7 +81,7 @@ const MapModal = ({ openModal, setOpenModal, children }) => {
 
 MapModal.propTypes = {
   openModal: PropTypes.bool,
-  children: PropTypes.array,
+  children: PropTypes.any,
   setOpenModal: PropTypes.func
 }
 
