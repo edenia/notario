@@ -6,6 +6,17 @@
     "productsTitle": "Listado de productos",
     "usersTitle": "Listado de usuarios",
     "logout": "Salir",
+    "result": {
+      "title": "Documento de Certificación 01",
+      "hashTitle": "Hash del Certificado",
+      "date": "Fecha y Hora",
+      "account": "Cuenta Escritora",
+      "titleInfo": "Título",
+      "comment": "Comentario",
+      "idInfo": "ID de Transacción",
+      "qrMessage": "Escanéa este código QR con la cámara de tu móvil para copiar el hash fácilmente.",
+      "donwloadButton": "Descargar en PDF"
+    },
     "notary": {
       "text1": "Una herramienta creada para notariar documentos digitales en el blockchain.",
       "text2": "Certificá documentos nuevos o validá certificaciones previas.",
@@ -16,7 +27,13 @@
         "paragraph": "Pegue el hash de su certificado o utilice la cámara para detectar un código QR.",
         "qrButton": "Detectar QR"
       },
-      "certifyMoval": {},
+      "certifyModal": {
+        "title": "Paso 1 de 2: Envío de Datos",
+        "title2": "Paso 2 de 2: Registro en Blockchain",
+        "inputCheck": "Guardar en memoria (RAM)",
+        "paragraph": "Certificá datos ya sea en formato de texto o por medio de un archivo subido desde.",
+        "paragraph2": "Se ha generado un hash para sus datos, proceda a registrarlo en el blockchain. Añada un título y comentario al certificado para brindar más información. Incluya el certificado en memoria (RAM) para más fácil acceso posteriormente. Este servicio tiene un costo adicional."
+      },
       "cancelButton": "Cancelar",
       "acceptButton": "Validar"
     }

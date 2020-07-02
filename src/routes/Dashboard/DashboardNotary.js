@@ -2,18 +2,20 @@ import React, { useState } from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { useTranslation } from 'react-i18next'
 import Grid from '@material-ui/core/Grid'
-import Box from '@material-ui/core/Box'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import SearchIcon from '@material-ui/icons/Search'
 import AddIcon from '@material-ui/icons/Add'
-import TextField from '@material-ui/core/TextField'
-import CameraAltIcon from '@material-ui/icons/CameraAlt'
-import QrReader from 'react-qr-scanner'
-import IconButton from '@material-ui/core/IconButton'
-import CloseIcon from '@material-ui/icons/Close'
 
-import Modal from '../../components/Modal'
+import VerifyModal from './VerifyModal'
+import CertifyModal from './CertifyModal'
+
+const methods = [
+  {
+    value: 'file',
+    label: 'Archivo'
+  }
+]
 
 const useStyles = makeStyles((theme) => ({
   wrapper: {
@@ -61,11 +63,15 @@ const useStyles = makeStyles((theme) => ({
       }
     }
   },
-  verifyContentBtn: {
+  contentBtn: {
     display: 'flex',
     justifyContent: 'flex-end',
     '& button': {
       marginLeft: theme.spacing(1)
+    },
+    '& div': {
+      marginLeft: theme.spacing(1),
+      flexGrow: '0 !important'
     }
   },
   qrBox: {
@@ -92,22 +98,67 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('sm')]: {
       marginTop: theme.spacing(4)
     }
+  },
+  certifyContent: {
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    '& h3': {
+      fontSize: 21.1,
+      fontWeight: 'bold',
+      letterSpacing: '0.25px',
+      color: theme.palette.secondary.contrastText
+    },
+    '& p': {
+      fontSize: 15.8,
+      lineHeight: 1.52,
+      letterSpacing: '0.15px',
+      color: theme.palette.secondary.onSecondaryMediumEmphasizedText
+    },
+    '& .MuiTextField-root': {
+      margin: theme.spacing(1.5, 0, 1, 0),
+      '& p': {
+        fontSize: 11,
+        lineHeight: 1.35,
+        letterSpacing: '0.4px'
+      }
+    }
+  },
+  dropBox: {
+    display: 'flex',
+    justifyContent: 'center',
+    [theme.breakpoints.up('sm')]: {
+      height: '95%'
+    }
   }
 }))
 
-const Products = () => {
+const Notary = () => {
   const { t } = useTranslation('translations')
   const classes = useStyles()
   const [openCertifyModal, setOpenCertifyModal] = useState(false)
   const [openVerifyModal, setOpenVerifyModal] = useState(false)
   const [loadingQr, setLoadingQr] = useState(false)
-  const [inputHashValue, setInputHashValue] = useState('')
+  const [inputHashValue, setInputHashValue] = useState({ isValid: false })
+  const [method, setMethod] = useState('')
+  const [step, setStep] = useState(1)
+  const [file, setFile] = useState(null)
+  const [dataForm, setDataForm] = useState({
+    comment: '',
+    useRam: false,
+    title: ''
+  })
+
+  const onHandleSetDataForm = (value, field) => {
+    setDataForm({ ...dataForm, [field]: value })
+  }
 
   return (
     <Grid item xs={12} className={classes.wrapper}>
       <Typography variant="body1">{t('notary.text1')}</Typography>
       <Typography variant="body1">{t('notary.text2')}</Typography>
-      <Grid xs={12} className={classes.btnBox}>
+      <Grid className={classes.btnBox}>
         <Button
           variant="contained"
           color="secondary"
@@ -125,89 +176,36 @@ const Products = () => {
           {t('notary.verifyButton')}
         </Button>
 
-        <Modal
-          openModal={openCertifyModal}
-          setOpenModal={setOpenCertifyModal}
+        <VerifyModal
+          classes={classes}
+          openVerifyModal={openVerifyModal}
+          setOpenVerifyModal={setOpenVerifyModal}
+          setInputHashValue={setInputHashValue}
+          inputHashValue={inputHashValue}
+          setLoadingQr={setLoadingQr}
+          loadingQr={loadingQr}
+          t={t}
         />
 
-        <Modal openModal={openVerifyModal} setOpenModal={setOpenVerifyModal}>
-          <Box className={classes.verifyContent}>
-            <Box>
-              <Typography variant="h3" align="left">
-                {t('notary.verifyModal.title')}
-              </Typography>
-              <Typography variant="body1">
-                {t('notary.verifyModal.paragraph')}
-              </Typography>
-              <TextField
-                id="input-hash"
-                label="Hash"
-                variant="outlined"
-                placeholder="Hash del certificado"
-                value={inputHashValue}
-                onChange={(event) => setInputHashValue(event.target.value)}
-                fullWidth
-              />
-              {!loadingQr && (
-                <Box className={classes.btnShowQr}>
-                  <Button
-                    variant="outlined"
-                    startIcon={<CameraAltIcon />}
-                    onClick={() => setLoadingQr(true)}
-                  >
-                    {t('notary.verifyModal.qrButton')}
-                  </Button>
-                </Box>
-              )}
-              {loadingQr && (
-                <Box className={classes.qrBox}>
-                  <Box className={classes.closeIcon}>
-                    <IconButton
-                      aria-label="close"
-                      color="inherit"
-                      size="small"
-                      onClick={() => setLoadingQr(false)}
-                    >
-                      <CloseIcon fontSize="inherit" />
-                    </IconButton>
-                  </Box>
-                  <QrReader
-                    delay={100}
-                    onError={() => {}}
-                    facingMode="rear"
-                    style={{
-                      height: '100% !important',
-                      width: '100%',
-                      backgroundColor: '#8080808c'
-                    }}
-                    onScan={(value) => {
-                      if (!value) return
-
-                      setInputHashValue(value)
-                      setLoadingQr(false)
-                    }}
-                  />
-                </Box>
-              )}
-            </Box>
-            <Box className={classes.verifyContentBtn}>
-              <Button variant="outlined" onClick={() => setLoadingQr(false)}>
-                {t('notary.cancelButton')}
-              </Button>
-              <Button
-                variant="contained"
-                color="secondary"
-                onClick={() => {}}
-                disabled={!inputHashValue.length}
-              >
-                {t('notary.acceptButton')}
-              </Button>
-            </Box>
-          </Box>
-        </Modal>
+        <CertifyModal
+          classes={classes}
+          setOpenCertifyModal={setOpenCertifyModal}
+          openCertifyModal={openCertifyModal}
+          setMethod={setMethod}
+          methods={methods}
+          setFile={setFile}
+          file={file}
+          onHandleSetDataForm={onHandleSetDataForm}
+          setLoadingQr={setLoadingQr}
+          t={t}
+          step={step}
+          setStep={setStep}
+          dataForm={dataForm}
+          method={method}
+        />
       </Grid>
     </Grid>
   )
 }
 
-export default Products
+export default Notary
