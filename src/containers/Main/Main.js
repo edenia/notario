@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
-import { Link as RouterLink } from 'react-router-dom'
+import { Link as RouterLink, useLocation } from 'react-router-dom'
 import { makeStyles, useTheme } from '@material-ui/styles'
 import AppBar from '@material-ui/core/AppBar'
 import Container from '@material-ui/core/Container'
 import Drawer from '@material-ui/core/Drawer'
+import Box from '@material-ui/core/Box'
 import Toolbar from '@material-ui/core/Toolbar'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
+import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace'
 import Typography from '@material-ui/core/Typography'
 
 const useStyles = makeStyles((theme) => ({
@@ -50,12 +52,21 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.white,
     height: '100%',
     padding: theme.spacing(2)
+  },
+  linkBox: {
+    color: theme.palette.white,
+    display: 'flex',
+    '& svg': {
+      marginRight: theme.spacing(1)
+    }
   }
 }))
 
 const Main = ({ children, sidebarContent, topbarContent }) => {
   const classes = useStyles()
   const theme = useTheme()
+  const location = useLocation()
+  const isResultPage = location.pathname === '/dashboard/result'
   const isDesktop = useMediaQuery(theme.breakpoints.up('md'), {
     defaultMatches: true
   })
@@ -73,7 +84,14 @@ const Main = ({ children, sidebarContent, topbarContent }) => {
       <AppBar className={classes.appBar}>
         <Toolbar>
           <RouterLink to="/">
-            <Typography variant="h3">Notario Digital</Typography>
+            {isResultPage ? (
+              <Box className={classes.linkBox}>
+                <KeyboardBackspaceIcon />
+                <Typography variant="h3">Resultado</Typography>
+              </Box>
+            ) : (
+              <Typography variant="h3">Notario Digital</Typography>
+            )}
           </RouterLink>
           {topbarContent}
         </Toolbar>
