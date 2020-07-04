@@ -35,8 +35,11 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   bodyWrapper: {
-    height: '90%',
-    padding: theme.spacing(0, 2)
+    height: '95%',
+    padding: theme.spacing(0, 2),
+    [theme.breakpoints.up('sm')]: {
+      height: '90%'
+    }
   }
 }))
 

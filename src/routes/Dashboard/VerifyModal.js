@@ -10,7 +10,7 @@ import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 
 import Modal from '../../components/Modal'
-import CustomRouterLink from '../../components/CustomRouterLink'
+import TransitionAlert from '../../components/TransitionAlert'
 
 const VerifyModal = ({
   classes,
@@ -20,7 +20,10 @@ const VerifyModal = ({
   inputHashValue,
   setLoadingQr,
   loadingQr,
-  t
+  t,
+  setError,
+  error,
+  onHandleVerify
 }) => (
   <Modal openModal={openVerifyModal} setOpenModal={setOpenVerifyModal}>
     <Box className={classes.verifyContent}>
@@ -83,19 +86,21 @@ const VerifyModal = ({
           </Box>
         )}
       </Box>
-      <Box className={classes.contentBtn}>
-        <Button variant="outlined" onClick={() => setOpenVerifyModal(false)}>
-          {t('notary.cancelButton')}
-        </Button>
-        <Button
-          variant="contained"
-          color="secondary"
-          component={CustomRouterLink}
-          to="/dashboard/result"
-          disabled={!inputHashValue.isValid}
-        >
-          {t('notary.acceptButton')}
-        </Button>
+      <Box>
+        <TransitionAlert data={error} setData={setError} />
+        <Box className={classes.contentBtn}>
+          <Button variant="outlined" onClick={() => setOpenVerifyModal(false)}>
+            {t('notary.cancelButton')}
+          </Button>
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={() => onHandleVerify()}
+            disabled={!inputHashValue.isValid || error.isError}
+          >
+            {t('notary.acceptButton')}
+          </Button>
+        </Box>
       </Box>
     </Box>
   </Modal>
@@ -109,7 +114,10 @@ VerifyModal.propTypes = {
   inputHashValue: PropTypes.object,
   setLoadingQr: PropTypes.func,
   loadingQr: PropTypes.bool,
-  t: PropTypes.any
+  t: PropTypes.any,
+  error: PropTypes.object,
+  setError: PropTypes.func,
+  onHandleVerify: PropTypes.func
 }
 
 export default VerifyModal

@@ -1,11 +1,16 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { useTranslation } from 'react-i18next'
+import PropTypes from 'prop-types'
 import Box from '@material-ui/core/Box'
 import QRCode from 'qrcode.react'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
+import LinearProgress from '@material-ui/core/LinearProgress'
 import GetAppIcon from '@material-ui/icons/GetApp'
+import { useLocation } from 'react-router-dom'
+import html2canvas from 'html2canvas'
+import jsPDF from 'jspdf'
 
 const useStyles = makeStyles((theme) => ({
   resultContent: {
@@ -88,59 +93,100 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-const Result = () => {
+const Result = ({ ual }) => {
   const { t } = useTranslation('translations')
   const classes = useStyles()
+  const location = useLocation()
+  const [data, setData] = useState(null)
+  const [loading, setLoading] = useState(true)
 
-  const dataMock = {
-    hash: 'dd37a1fa082fe28531047a08f4e6dbd71336dad15515ff178f1b180e77629e25',
-    FechaHora: '10 de Abril del 2020, 12:34:04 PM (+6)',
-    CuentaEscritora: 'cuenta12letr',
-    Título: 'Documento de Certificación 01',
-    Comentario:
-      'Este es un documento destinado a certificar una serie de datos de importancia.',
-    id: '6431752561a561ffb957aa0c0a892f11a167cb8acbafe86a584cb1512cd9b789'
+  const print = () => {
+    const filename = `${data.titulo.length ? data.titulo : 'sinTitulo'}.pdf`
+
+    html2canvas(document.querySelector('#printAsPDF')).then((canvas) => {
+      const pdf = new jsPDF('p', 'mm', 'a4')
+      pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, 211, 298)
+      pdf.save(filename)
+    })
   }
+
+  useEffect(() => {
+    const getData = async () => {
+      if (ual.activeUser) {
+        setLoading(true)
+        const { rows } = await ual.activeUser.rpc.get_table_rows({
+          json: true,
+          code: 'notarioeoscr',
+          scope: 'notarioeoscr',
+          table: 'libro',
+          limit: 10,
+          index_position: 2,
+          key_type: 'sha256',
+          lower_bound: location.state.hash
+        })
+
+        const txId = rows.length ? rows[0].tx : null
+
+        const { traces } = await ual.activeUser.rpc.history_get_transaction(
+          txId
+        )
+        setData(traces.length ? { ...traces[0].act.data, txId } : null)
+        setLoading(false)
+      }
+    }
+
+    getData()
+  }, [ual.activeUser, location.state.hash])
+
+  if (loading)
+    return (
+      <Box mt={5} width="100%">
+        <Typography variant="h5" align="center">
+          {(t('result.loadingInformation') || '').toUpperCase()}
+        </Typography>
+        <LinearProgress color="secondary" />
+      </Box>
+    )
 
   return (
     <Box width="100%">
-      <Box className={classes.resultContent}>
+      <Box className={classes.resultContent} id="printAsPDF">
         <Box className={classes.resultContentLeft}>
           <Typography variant="h1">{t('result.title')}</Typography>
           <Box className={classes.hashContent}>
             <Typography variant="h3" align="left">
               {t('result.hashTitle')}:
             </Typography>
-            <Typography variant="body1">{dataMock.hash}</Typography>
+            <Typography variant="body1">{data.hash}</Typography>
           </Box>
 
           <Typography variant="body1">
             <strong>{`${t('result.date')}: `}</strong>
-            {dataMock.FechaHora}
+            {data.FechaHora || '- -'}
           </Typography>
 
           <Typography variant="body1">
             <strong>{`${t('result.account')}: `}</strong>
-            {dataMock.CuentaEscritora}
+            {data.usuario}
           </Typography>
 
           <Typography variant="body1">
             <strong>{`${t('result.titleInfo')}: `}</strong>
-            {dataMock.Título}
+            {data.titulo}
           </Typography>
 
           <Typography variant="body1">
             <strong>{`${t('result.comment')}: `}</strong>
-            {dataMock.Comentario}
+            {data.comentario || '- -'}
           </Typography>
 
           <Typography variant="body1" className={classes.idInfo}>
             <strong>{`${t('result.idInfo')}: `}</strong>
-            {dataMock.id}
+            {data.txId}
           </Typography>
         </Box>
         <Box className={classes.resultContentRight}>
-          <QRCode value={dataMock.hash || 'n/a'} size={200} />
+          <QRCode value={data.hash || 'n/a'} size={200} />
           <Typography
             variant="body1"
             className={classes.qrMessage}
@@ -155,7 +201,7 @@ const Result = () => {
           variant="contained"
           color="secondary"
           startIcon={<GetAppIcon />}
-          onClick={() => {}}
+          onClick={() => print()}
           className={classes.btnDownloadPDF}
         >
           {t('result.donwloadButton')}
@@ -163,6 +209,14 @@ const Result = () => {
       </Box>
     </Box>
   )
+}
+
+Result.propTypes = {
+  ual: PropTypes.object
+}
+
+Result.defaultProps = {
+  ual: {}
 }
 
 export default Result

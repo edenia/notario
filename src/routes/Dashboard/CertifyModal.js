@@ -6,9 +6,11 @@ import MenuItem from '@material-ui/core/MenuItem'
 import Switch from '@material-ui/core/Switch'
 import { DropzoneHash } from '@eoscostarica/eoscr-components'
 import Button from '@material-ui/core/Button'
+import CircularProgress from '@material-ui/core/CircularProgress'
 import Typography from '@material-ui/core/Typography'
 
 import Modal from '../../components/Modal'
+import TransitionAlert from '../../components/TransitionAlert'
 
 const CertifyModal = ({
   classes,
@@ -23,9 +25,19 @@ const CertifyModal = ({
   t,
   step,
   setStep,
-  dataForm
+  dataForm,
+  onSaveData,
+  loading,
+  error,
+  setError
 }) => (
-  <Modal openModal={openCertifyModal} setOpenModal={setOpenCertifyModal}>
+  <Modal
+    openModal={openCertifyModal}
+    setOpenModal={(value) => {
+      setOpenCertifyModal(value)
+      setFile(null)
+    }}
+  >
     <Box className={classes.certifyContent}>
       <Box>
         {step === 1 && (
@@ -45,6 +57,7 @@ const CertifyModal = ({
               onChange={(e) => setMethod(e.target.value)}
               variant="outlined"
               fullWidth
+              disabled={error.isError}
             >
               {methods.map((option) => (
                 <MenuItem key={option.value} value={option.value}>
@@ -52,11 +65,15 @@ const CertifyModal = ({
                 </MenuItem>
               ))}
             </TextField>
+
             {method === 'file' && (
               <DropzoneHash
                 useModal={false}
-                handleOnDropFile={(resultFile) => setFile(resultFile)}
+                handleOnDropFile={(resultFile) => {
+                  setFile(resultFile)
+                }}
                 customStyle={file ? {} : classes.dropBox}
+                initFile={file}
               />
             )}
           </>
@@ -102,12 +119,16 @@ const CertifyModal = ({
           </>
         )}
       </Box>
-      <Box className={classes.contentBtn}>
+      <Box>
+        <TransitionAlert data={error} setData={setError} />
         {step === 1 && (
-          <>
+          <Box className={classes.contentBtn}>
             <Button
               variant="outlined"
-              onClick={() => setOpenCertifyModal(false)}
+              onClick={() => {
+                setOpenCertifyModal(false)
+                setFile(null)
+              }}
             >
               {t('notary.cancelButton')}
             </Button>
@@ -115,29 +136,39 @@ const CertifyModal = ({
               variant="contained"
               color="secondary"
               onClick={() => setStep(2)}
-              disabled={!file}
+              disabled={!file || error.isError}
+              className={classes.certifyButton}
             >
-              {t('notary.acceptButton')}
+              {t('notary.sendButton')}
             </Button>
-          </>
+          </Box>
         )}
         {step === 2 && (
-          <>
+          <Box className={classes.contentBtn}>
             <Button
               variant="outlined"
-              onClick={() => setOpenCertifyModal(false)}
+              onClick={() => {
+                setOpenCertifyModal(false)
+                setFile(null)
+              }}
+              disabled={loading}
             >
               {t('notary.cancelButton')}
             </Button>
             <Button
               variant="contained"
               color="secondary"
-              onClick={() => setOpenCertifyModal(false)}
-              disabled={!dataForm.title}
+              onClick={() => onSaveData()}
+              disabled={!dataForm.title || loading}
+              className={classes.certifyButton}
             >
-              {t('notary.acceptButton')}
+              {loading ? (
+                <CircularProgress size={14} />
+              ) : (
+                t('notary.sendButton')
+              )}
             </Button>
-          </>
+          </Box>
         )}
       </Box>
     </Box>
@@ -153,11 +184,15 @@ CertifyModal.propTypes = {
   setFile: PropTypes.func,
   file: PropTypes.object,
   onHandleSetDataForm: PropTypes.func,
+  onSaveData: PropTypes.func,
   t: PropTypes.any,
   step: PropTypes.any,
   setStep: PropTypes.func,
   dataForm: PropTypes.object,
-  method: PropTypes.any
+  method: PropTypes.any,
+  error: PropTypes.object,
+  setError: PropTypes.func,
+  loading: PropTypes.bool
 }
 
 export default CertifyModal
