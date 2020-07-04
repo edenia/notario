@@ -29,8 +29,12 @@ const Dashboard = ({ ual }) => (
   >
     <Grid container>
       <Switch>
-        <Route exact path="/dashboard/notary" component={DashboardMainPage} />
-        <Route exact path="/dashboard/result" component={DashboardResult} />
+        <Route exact path="/dashboard/notary">
+          <DashboardMainPage ual={ual} />
+        </Route>
+        <Route exact path="/dashboard/result">
+          <DashboardResult ual={ual} />
+        </Route>
         <Redirect from="/dashboard" to="/dashboard/notary" />
       </Switch>
     </Grid>

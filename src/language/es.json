@@ -15,7 +15,8 @@
       "comment": "Comentario",
       "idInfo": "ID de Transacción",
       "qrMessage": "Escanéa este código QR con la cámara de tu móvil para copiar el hash fácilmente.",
-      "donwloadButton": "Descargar en PDF"
+      "donwloadButton": "Descargar en PDF",
+      "loadingInformation": "Cargando la información"
     },
     "notary": {
       "text1": "Una herramienta creada para notariar documentos digitales en el blockchain.",
@@ -35,7 +36,8 @@
         "paragraph2": "Se ha generado un hash para sus datos, proceda a registrarlo en el blockchain. Añada un título y comentario al certificado para brindar más información. Incluya el certificado en memoria (RAM) para más fácil acceso posteriormente. Este servicio tiene un costo adicional."
       },
       "cancelButton": "Cancelar",
-      "acceptButton": "Validar"
+      "acceptButton": "Validar",
+      "sendButton": "Enviar"
     }
   }
 }
