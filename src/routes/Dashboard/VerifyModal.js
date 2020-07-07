@@ -72,9 +72,10 @@ const VerifyModal = ({
               onError={() => {}}
               facingMode="rear"
               style={{
-                height: '100% !important',
+                height: 300,
                 width: '100%',
-                backgroundColor: '#8080808c'
+                backgroundColor: '#8080808c',
+                marginBottom: 24
               }}
               onScan={(value) => {
                 if (!value) return
