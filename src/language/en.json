@@ -6,14 +6,14 @@
     "resultPage": "Result",
     "result": {
       "defaultTitle": "No Title",
-      "hashTitle": "Hash del Certificado",
+      "hashTitle": "Certificate Hash",
       "date": "Date",
       "account": "Account",
       "titleInfo": "Title",
       "comment": "Comment",
       "idInfo": "Transaction ID",
       "qrMessage": "Scan this QR code with your mobile camera to copy the hash.",
-      "donwloadButton": "Download as PDF",
+      "downloadButton": "Download as PDF",
       "openModal": "Open Modal",
       "loadingInformation": "Loading Information"
     },

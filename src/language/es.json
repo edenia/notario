@@ -13,7 +13,7 @@
       "comment": "Comentario",
       "idInfo": "ID de Transacción",
       "qrMessage": "Escanéa este código QR con la cámara de tu móvil para copiar el hash fácilmente.",
-      "donwloadButton": "Descargar en PDF",
+      "downloadButton": "Descargar en PDF",
       "openModal": "Abrir Modal",
       "loadingInformation": "Cargando la información"
     },

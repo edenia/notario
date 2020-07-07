@@ -52,7 +52,7 @@ const PreviewPDFModal = ({ open, setOpen, componentToPrint, titulo }) => {
         onClick={() => handlePrintAsPdf()}
         className={classes.btnDownloadPDF}
       >
-        {t('result.donwloadButton')}
+        {t('result.downloadButton')}
       </Button>
     </Modal>
   )
