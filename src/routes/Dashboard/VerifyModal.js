@@ -74,7 +74,7 @@ const VerifyModal = ({
               style={{
                 height: 300,
                 width: '100%',
-                backgroundColor: 'grey',
+                backgroundColor: '#8080808c',
                 marginBottom: 24
               }}
               onScan={(value) => {
