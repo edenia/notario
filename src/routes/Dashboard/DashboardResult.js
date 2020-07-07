@@ -7,10 +7,10 @@ import QRCode from 'qrcode.react'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import LinearProgress from '@material-ui/core/LinearProgress'
-import GetAppIcon from '@material-ui/icons/GetApp'
+import PictureAsPdfIcon from '@material-ui/icons/PictureAsPdf'
 import { useLocation } from 'react-router-dom'
-import html2canvas from 'html2canvas'
-import jsPDF from 'jspdf'
+
+import PreviewPDFModal from './PreviewPDFModal'
 
 const useStyles = makeStyles((theme) => ({
   resultContent: {
@@ -88,10 +88,66 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     margin: theme.spacing(2, 0),
     [theme.breakpoints.up('sm')]: {
-      width: 300
+      width: 200
     }
   }
 }))
+
+const BodyResult = ({ data }) => {
+  const { t } = useTranslation('translations')
+  const classes = useStyles()
+
+  return (
+    <Box className={classes.resultContent}>
+      <Box className={classes.resultContentLeft}>
+        <Typography variant="h1">
+          {data.titulo || t('result.defaultTitle')}
+        </Typography>
+        <Box className={classes.hashContent}>
+          <Typography variant="h3" align="left">
+            {t('result.hashTitle')}:
+          </Typography>
+          <Typography variant="body1">{data.hash}</Typography>
+        </Box>
+
+        <Typography variant="body1">
+          <strong>{`${t('result.date')}: `}</strong>
+          {data.FechaHora || '- -'}
+        </Typography>
+
+        <Typography variant="body1">
+          <strong>{`${t('result.account')}: `}</strong>
+          {data.usuario}
+        </Typography>
+
+        <Typography variant="body1">
+          <strong>{`${t('result.titleInfo')}: `}</strong>
+          {data.titulo}
+        </Typography>
+
+        <Typography variant="body1">
+          <strong>{`${t('result.comment')}: `}</strong>
+          {data.comentario || '- -'}
+        </Typography>
+
+        <Typography variant="body1" className={classes.idInfo}>
+          <strong>{`${t('result.idInfo')}: `}</strong>
+          {data.txId}
+        </Typography>
+      </Box>
+      <Box className={classes.resultContentRight}>
+        <QRCode value={data.hash || 'n/a'} size={200} />
+        <Typography
+          variant="body1"
+          className={classes.qrMessage}
+          align="center"
+        >
+          {t('result.qrMessage')}
+        </Typography>
+      </Box>
+    </Box>
+  )
+}
 
 const Result = ({ ual }) => {
   const { t } = useTranslation('translations')
@@ -99,19 +155,11 @@ const Result = ({ ual }) => {
   const location = useLocation()
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true)
-
-  const print = () => {
-    const filename = `${data.titulo.length ? data.titulo : 'sinTitulo'}.pdf`
-
-    html2canvas(document.querySelector('#printAsPDF')).then((canvas) => {
-      const pdf = new jsPDF('p', 'mm', 'a4')
-      pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, 211, 298)
-      pdf.save(filename)
-    })
-  }
+  const [open, setOpen] = useState(false)
 
   useEffect(() => {
     const getData = async () => {
+      console.log({ ual })
       if (ual.activeUser) {
         setLoading(true)
         const { rows } = await ual.activeUser.rpc.get_table_rows({
@@ -128,7 +176,8 @@ const Result = ({ ual }) => {
         const txId = rows.length ? rows[0].tx : null
 
         const { traces } = await ual.activeUser.rpc.history_get_transaction(
-          txId
+          txId,
+          null
         )
         setData(traces.length ? { ...traces[0].act.data, txId } : null)
         setLoading(false)
@@ -150,63 +199,24 @@ const Result = ({ ual }) => {
 
   return (
     <Box width="100%">
-      <Box className={classes.resultContent} id="printAsPDF">
-        <Box className={classes.resultContentLeft}>
-          <Typography variant="h1">{t('result.title')}</Typography>
-          <Box className={classes.hashContent}>
-            <Typography variant="h3" align="left">
-              {t('result.hashTitle')}:
-            </Typography>
-            <Typography variant="body1">{data.hash}</Typography>
-          </Box>
-
-          <Typography variant="body1">
-            <strong>{`${t('result.date')}: `}</strong>
-            {data.FechaHora || '- -'}
-          </Typography>
-
-          <Typography variant="body1">
-            <strong>{`${t('result.account')}: `}</strong>
-            {data.usuario}
-          </Typography>
-
-          <Typography variant="body1">
-            <strong>{`${t('result.titleInfo')}: `}</strong>
-            {data.titulo}
-          </Typography>
-
-          <Typography variant="body1">
-            <strong>{`${t('result.comment')}: `}</strong>
-            {data.comentario || '- -'}
-          </Typography>
-
-          <Typography variant="body1" className={classes.idInfo}>
-            <strong>{`${t('result.idInfo')}: `}</strong>
-            {data.txId}
-          </Typography>
-        </Box>
-        <Box className={classes.resultContentRight}>
-          <QRCode value={data.hash || 'n/a'} size={200} />
-          <Typography
-            variant="body1"
-            className={classes.qrMessage}
-            align="center"
-          >
-            {t('result.qrMessage')}
-          </Typography>
-        </Box>
-      </Box>
+      <BodyResult data={data} />
       <Box>
         <Button
           variant="contained"
           color="secondary"
-          startIcon={<GetAppIcon />}
-          onClick={() => print()}
+          startIcon={<PictureAsPdfIcon />}
+          onClick={() => setOpen(true)}
           className={classes.btnDownloadPDF}
         >
-          {t('result.donwloadButton')}
+          {t('result.openModal')}
         </Button>
       </Box>
+      <PreviewPDFModal
+        open={open}
+        setOpen={setOpen}
+        titulo={data.titulo}
+        componentToPrint={<BodyResult data={data} />}
+      />
     </Box>
   )
 }
@@ -217,6 +227,10 @@ Result.propTypes = {
 
 Result.defaultProps = {
   ual: {}
+}
+
+BodyResult.propTypes = {
+  data: PropTypes.object
 }
 
 export default Result

@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: theme.shadows[5],
     height: '100%',
     width: '100%',
+    overflowY: 'auto',
     outlineWidth: 0,
     [theme.breakpoints.up('sm')]: {
       height: '58%',

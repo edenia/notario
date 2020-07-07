@@ -1,13 +1,11 @@
 {
   "translations": {
     "login": "Iniciar sesión",
-    "users": "Usuarios",
-    "products": "Productos",
-    "productsTitle": "Listado de productos",
-    "usersTitle": "Listado de usuarios",
     "logout": "Salir",
+    "mainTitle": "Notario Digital",
+    "resultPage": "Resultados",
     "result": {
-      "title": "Documento de Certificación 01",
+      "defaultTitle": "Sin Titulo",
       "hashTitle": "Hash del Certificado",
       "date": "Fecha y Hora",
       "account": "Cuenta Escritora",
@@ -16,6 +14,7 @@
       "idInfo": "ID de Transacción",
       "qrMessage": "Escanéa este código QR con la cámara de tu móvil para copiar el hash fácilmente.",
       "donwloadButton": "Descargar en PDF",
+      "openModal": "Abrir Modal",
       "loadingInformation": "Cargando la información"
     },
     "notary": {
@@ -29,6 +28,10 @@
         "qrButton": "Detectar QR"
       },
       "certifyModal": {
+        "selectLegend": "Seleccioná el método de certificado",
+        "selectLabel": "Método",
+        "dropZoneButtonText": "Buscar Archivo",
+        "dropZoneText": "Arrastrá y Soltá el Archivo Aquí",
         "title": "Paso 1 de 2: Envío de Datos",
         "title2": "Paso 2 de 2: Registro en Blockchain",
         "inputCheck": "Guardar en memoria (RAM)",

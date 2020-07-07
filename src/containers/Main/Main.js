@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
 import { Link as RouterLink, useLocation } from 'react-router-dom'
@@ -63,6 +64,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const Main = ({ children, sidebarContent, topbarContent }) => {
+  const { t } = useTranslation('translations')
   const classes = useStyles()
   const theme = useTheme()
   const location = useLocation()
@@ -87,10 +89,10 @@ const Main = ({ children, sidebarContent, topbarContent }) => {
             {isResultPage ? (
               <Box className={classes.linkBox}>
                 <KeyboardBackspaceIcon />
-                <Typography variant="h3">Resultado</Typography>
+                <Typography variant="h3">{t('resultPage')}</Typography>
               </Box>
             ) : (
-              <Typography variant="h3">Notario Digital</Typography>
+              <Typography variant="h3">{t('mainTitle')}</Typography>
             )}
           </RouterLink>
           {topbarContent}

@@ -51,8 +51,8 @@ const CertifyModal = ({
             <TextField
               id="outlined-select-method"
               select
-              label="Método"
-              helperText={method ? '' : 'Seleccioná el método de certificado'}
+              label={t('notary.certifyModal.selectLabel')}
+              helperText={method ? '' : t('notary.certifyModal.selectLegend')}
               value={method}
               onChange={(e) => setMethod(e.target.value)}
               variant="outlined"
@@ -73,7 +73,8 @@ const CertifyModal = ({
                   setFile(resultFile)
                 }}
                 customStyle={file ? {} : classes.dropBox}
-                initFile={file}
+                dropZoneButtonText={t('notary.certifyModal.dropZoneButtonText')}
+                dropZoneText={t('notary.certifyModal.dropZoneText')}
               />
             )}
           </>
