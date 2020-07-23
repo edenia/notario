@@ -4,6 +4,8 @@
     "logout": "Salir",
     "mainTitle": "Notario Digital",
     "resultPage": "Resultados",
+    "back": "Regresar",
+    "message": "Mensaje",
     "result": {
       "defaultTitle": "Sin Titulo",
       "hashTitle": "Hash del Certificado",
@@ -25,7 +27,9 @@
       "verifyModal": {
         "title": "Validación de Certificados",
         "paragraph": "Pegue el hash de su certificado o utilice la cámara para detectar un código QR.",
-        "qrButton": "Detectar QR"
+        "qrButton": "Detectar QR",
+        "messageError": "Hash Incorrecto",
+        "messageSuccess": "Hash Válido"
       },
       "certifyModal": {
         "selectLegend": "Seleccioná el método de certificado",

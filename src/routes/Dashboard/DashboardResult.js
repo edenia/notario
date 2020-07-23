@@ -10,6 +10,8 @@ import LinearProgress from '@material-ui/core/LinearProgress'
 import PictureAsPdfIcon from '@material-ui/icons/PictureAsPdf'
 import { useLocation } from 'react-router-dom'
 
+import { rpc } from '../../api/eosjs-api'
+
 import PreviewPDFModal from './PreviewPDFModal'
 
 const useStyles = makeStyles((theme) => ({
@@ -159,33 +161,28 @@ const Result = ({ ual }) => {
 
   useEffect(() => {
     const getData = async () => {
-      console.log({ ual })
-      if (ual.activeUser) {
-        setLoading(true)
-        const { rows } = await ual.activeUser.rpc.get_table_rows({
-          json: true,
-          code: 'notarioeoscr',
-          scope: 'notarioeoscr',
-          table: 'libro',
-          limit: 10,
-          index_position: 2,
-          key_type: 'sha256',
-          lower_bound: location.state.hash
-        })
+      setLoading(true)
 
-        const txId = rows.length ? rows[0].tx : null
+      const { rows } = await rpc.get_table_rows({
+        json: true,
+        code: 'notarioeoscr',
+        scope: 'notarioeoscr',
+        table: 'libro',
+        limit: 10,
+        index_position: 2,
+        key_type: 'sha256',
+        lower_bound: location.state.hash
+      })
 
-        const { traces } = await ual.activeUser.rpc.history_get_transaction(
-          txId,
-          null
-        )
-        setData(traces.length ? { ...traces[0].act.data, txId } : null)
-        setLoading(false)
-      }
+      const txId = rows.length ? rows[0].tx : null
+      const { traces } = await rpc.history_get_transaction(txId, null)
+
+      setData(traces.length ? { ...traces[0].act.data, txId } : null)
+      setLoading(false)
     }
 
     getData()
-  }, [ual.activeUser, location.state.hash])
+  }, [location.state.hash])
 
   if (loading)
     return (
