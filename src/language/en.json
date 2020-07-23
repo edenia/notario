@@ -4,6 +4,8 @@
     "logout": "Logout",
     "mainTitle": "Notarize",
     "resultPage": "Result",
+    "back": "Back",
+    "message": "Message",
     "result": {
       "defaultTitle": "No Title",
       "hashTitle": "Certificate Hash",
@@ -25,7 +27,9 @@
       "verifyModal": {
         "title": "Certificate Validation",
         "paragraph": "Paste the hash of your certificate or use the camera to detect a QR code.",
-        "qrButton": "Detect QR code"
+        "qrButton": "Detect QR code",
+        "messageError": "Incorrect hash format",
+        "messageSuccess": "Hash is correct"
       },
       "certifyModal": {
         "selectLegend": "Select the certificate method",

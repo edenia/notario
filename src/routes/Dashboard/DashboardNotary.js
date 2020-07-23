@@ -16,6 +16,10 @@ const methods = [
   {
     value: 'file',
     label: 'Archivo'
+  },
+  {
+    value: 'text',
+    label: 'Text'
   }
 ]
 
@@ -74,6 +78,24 @@ const useStyles = makeStyles((theme) => ({
     '& div': {
       marginLeft: theme.spacing(1),
       flexGrow: '0 !important'
+    }
+  },
+  seeRicandianContract: {
+    width: '100%',
+    margin: '0px !important',
+    '& p': {
+      fontSize: 14.8,
+      lineHeight: 1.08,
+      letterSpacing: '1.25px',
+      textAlign: 'center',
+      marginLeft: theme.spacing(1)
+    },
+    '& button': {
+      margin: '0px !important',
+      padding: '5px 0px !important',
+      '&:hover': {
+        backgroundColor: 'transparent'
+      }
     }
   },
   qrBox: {
@@ -136,6 +158,17 @@ const useStyles = makeStyles((theme) => ({
   },
   certifyButton: {
     minWidth: 95
+  },
+  linkBox: {
+    display: 'flex',
+    width: 120,
+    marginBottom: theme.spacing(2),
+    '& svg': {
+      marginRight: theme.spacing(1)
+    },
+    '&:hover': {
+      cursor: 'pointer'
+    }
   }
 }))
 
@@ -186,8 +219,6 @@ const Notary = ({ ual }) => {
         key_type: 'sha256',
         lower_bound: resultFile.filehash
       })
-
-      console.log({ rows, resultFile })
 
       if (rows.length && rows[0].hash === resultFile.filehash) {
         setError({

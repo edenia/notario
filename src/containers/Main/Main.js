@@ -16,7 +16,11 @@ import Typography from '@material-ui/core/Typography'
 const useStyles = makeStyles((theme) => ({
   root: {
     paddingTop: theme.spacing(11),
-    display: 'flex'
+    display: 'flex',
+    [theme.breakpoints.up('lg')]: {
+      paddingRight: theme.spacing(32),
+      paddingLeft: theme.spacing(32)
+    }
   },
   appBar: {
     boxShadow: 'none',
@@ -76,13 +80,7 @@ const Main = ({ children, sidebarContent, topbarContent }) => {
   const [openSidebar, setOpenSidebar] = useState(false)
 
   return (
-    <Container
-      component="main"
-      maxWidth="xl"
-      className={clsx({
-        [classes.root]: true
-      })}
-    >
+    <Container component="main" maxWidth="xl" className={classes.root}>
       <AppBar className={classes.appBar}>
         <Toolbar>
           <RouterLink to="/">

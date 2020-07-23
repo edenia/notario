@@ -10,7 +10,6 @@ import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 
 import Modal from '../../components/Modal'
-import TransitionAlert from '../../components/TransitionAlert'
 
 const VerifyModal = ({
   classes,
@@ -43,6 +42,8 @@ const VerifyModal = ({
           value={inputHashValue.hash}
           handleOnChange={(result) => setInputHashValue(result)}
           fullWidth
+          messageError="Incorrect hash"
+          messageSuccess="Hash is correct"
         />
         {!loadingQr && (
           <Box className={classes.btnShowQr}>
@@ -88,7 +89,6 @@ const VerifyModal = ({
         )}
       </Box>
       <Box>
-        <TransitionAlert data={error} setData={setError} />
         <Box className={classes.contentBtn}>
           <Button variant="outlined" onClick={() => setOpenVerifyModal(false)}>
             {t('notary.cancelButton')}
@@ -97,7 +97,7 @@ const VerifyModal = ({
             variant="contained"
             color="secondary"
             onClick={() => onHandleVerify()}
-            disabled={!inputHashValue.isValid || error.isError}
+            disabled={!inputHashValue.isValid}
           >
             {t('notary.acceptButton')}
           </Button>
