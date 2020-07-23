@@ -162,6 +162,7 @@ const Result = ({ ual }) => {
   useEffect(() => {
     const getData = async () => {
       setLoading(true)
+
       const { rows } = await rpc.get_table_rows({
         json: true,
         code: 'notarioeoscr',
@@ -173,11 +174,9 @@ const Result = ({ ual }) => {
         lower_bound: location.state.hash
       })
 
-      console.log({ rows })
-
       const txId = rows.length ? rows[0].tx : null
-
       const { traces } = await rpc.history_get_transaction(txId, null)
+
       setData(traces.length ? { ...traces[0].act.data, txId } : null)
       setLoading(false)
     }
