@@ -13,7 +13,7 @@ TitlePage.propTypes = {
 }
 
 TitlePage.defaultProps = {
-  title: 'EOS RATE'
+  title: 'Blockchain Notarizer - EOS Costa Rica'
 }
 
 export default TitlePage
