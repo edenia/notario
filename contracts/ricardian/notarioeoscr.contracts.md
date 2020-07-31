@@ -1,13 +1,11 @@
 <h1 class="contract">anotar</h1>
----
+        ---
 spec-version: 0.1.0
-title: Save hash proof
-summary: The intent of the `{{ anotar }}` action is to prove existence of a SHA-256 hash at a specific date and time and also which account executes this action. This data will be persisted as a blockchain transaction so it is necessary for users to save the transaction id to retrieve the hash proof.
-icon:
+title: Registrar las acciones de la ARESEP
+summary: La intencion de la accion `{{ anotar }}` es permitir que la cuenta del 'emisor' califique a un productor de bloque en cinco categorías: Comunidad, Desarrollo, Infraestructura, Transparencia, Confianza.
 
 <h1 class="contract">limpiar</h1>
----
+        ---
 spec-version: 0.1.0
-title: Clear table
-summary: The intent of the `{{ limpiar }}` action is to delete all table records and is used for development purposes on test-nets and must not be published to mainnet.
-icon:
+title: borra todas las acciones registradas del blockchain
+summary: la intención de la accion `{{ limpiar }}` es proporcionar una forma de liberar los datos almacenados dentro del contrato.
