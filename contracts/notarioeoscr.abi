@@ -61,12 +61,12 @@
         {
             "name": "anotar",
             "type": "anotar",
-            "ricardian_contract": "---\nspec-version: 0.1.0\ntitle: Registrar las acciones de la ARESEP\nsummary: La intencion de la accion `{{ anotar }}` es permitir que la cuenta del 'emisor' califique a un productor de bloque en cinco categorías: Comunidad, Desarrollo, Infraestructura, Transparencia, Confianza."
+            "ricardian_contract": "---\nspec-version: 0.1.0\ntitle: Registrar las acciones de la ARESEP\nsummary: La intención de la acción `{{ anotar }}` es permitir que la cuenta del 'emisor' califique a un productor de bloque en cinco categorías: Comunidad, Desarrollo, Infraestructura, Transparencia, Confianza."
         },
         {
             "name": "limpiar",
             "type": "limpiar",
-            "ricardian_contract": "---\nspec-version: 0.1.0\ntitle: borra todas las acciones registradas del blockchain\nsummary: la intención de la accion `{{ limpiar }}` es proporcionar una forma de liberar los datos almacenados dentro del contrato."
+            "ricardian_contract": "---\nspec-version: 0.1.0\ntitle: borra todas las acciones registradas del blockchain\nsummary: la intención de la acción `{{ limpiar }}` es proporcionar una forma de liberar los datos almacenados dentro del contrato."
         }
     ],
     "tables": [
