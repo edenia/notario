@@ -1,18 +1,25 @@
-# EOSCR Web App Boilerplate
+# EOSCR Blockchain Notarizer
 
 [![N|Solid](https://github.com/eoscostarica/eos-rate/raw/master/docs/eoscostarica-logo-black.png)](https://eoscostarica.io/)
 
 ![](https://img.shields.io/github/license/eoscostarica/webapp-boilerplate) ![](https://img.shields.io/badge/code%20style-standard-brightgreen.svg) ![](https://img.shields.io/badge/%E2%9C%93-collaborative_etiquette-brightgreen.svg) ![](https://img.shields.io/twitter/follow/eoscostarica.svg?style=social&logo=twitter) ![](https://img.shields.io/github/forks/eoscostarica/webapp-boilerplate?style=social)
 
-A highly scalable skeleton with best practices, ideal for React Web App projects quick start
+The EOS CR Blockchain Notarizer allows you to generate a hash (SHA-256) of any file and register it on an EOSIO blockchain network. This enables anyone to prove that you had possession of that file at a particular point in time, and that it hasn’t been modified.
+
+This is useful to since blockchain records are immutable, it allows users to prove that they had access to the original data ¨behind¨ that hash at a specific date and time.
+
+See our [ricardian clauses](./contracts/ricardian/) for more details. 
+
+We don’t keep any of the information you provide. 
 
 ## Version
 
 - 0.1.0
 
-# Features!
 
-This boilerplate features all the latest tools and practices in the industry.
+## Tech Stack
+
+This webapp features all the latest tools and practices in the industry.
 
 - _React.js_ - **React 16**✨, React Router 5
 - _Rematch/core_ - Rematch a Redux Framework

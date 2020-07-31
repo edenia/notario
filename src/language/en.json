@@ -1,10 +1,50 @@
 {
   "translations": {
     "login": "Login",
-    "users": "Users",
-    "products": "Products",
-    "productsTitle": "Products list",
-    "usersTitle": "Users list",
-    "logout": "Logout"
+    "logout": "Logout",
+    "mainTitle": "Blockchain Notarizer Smart Contract - EOS Costa Rica",
+    "resultPage": "Result",
+    "back": "Back",
+    "message": "Message",
+    "result": {
+      "defaultTitle": "No Title",
+      "hashTitle": "Certificate Hash",
+      "date": "Date",
+      "account": "Account",
+      "titleInfo": "Title",
+      "comment": "Comment",
+      "idInfo": "Transaction ID",
+      "qrMessage": "Scan this QR code with your mobile camera to copy the hash.",
+      "downloadButton": "Download as PDF",
+      "openModal": "Open Modal",
+      "loadingInformation": "Loading Information"
+    },
+    "notary": {
+      "text1": "A tool created to notarize digital documents on the blockchain.",
+      "text2": "Certify new documents or confirm previous certifications.",
+      "certifyButton": "Certify Data",
+      "verifyButton": "Confirm Certificates",
+      "verifyModal": {
+        "title": "Certificate Validation",
+        "paragraph": "Paste the hash of your certificate or use the camera to detect a QR code.",
+        "qrButton": "Detect QR code",
+        "messageError": "Incorrect hash format",
+        "messageSuccess": "Hash is correct"
+      },
+      "certifyModal": {
+        "selectLegend": "Select the certificate method",
+        "selectLabel": "Method",
+        "dropZoneButtonText": "Search File",
+        "dropZoneText": "Drag and Drop File Here",
+        "title": "Step 1 of 2: Sending Data",
+        "title2": "Step 2 of 2: Register on Blockchain",
+        "inputCheck": "Save in memory (RAM)",
+        "paragraph": "Certify data in text format or through a file uploaded from.",
+        "paragraph2": "A hash has been generated for your data, proceed to register it on the blockchain. Add a title and comment on the certificate to provide more information. Include the certificate in memory (RAM) for easier access later. This service has an extra cost."
+      },
+      "cancelButton": "Cancel",
+      "acceptButton": "Validate",
+      "sendButton": "Send"
+    }
   }
 }

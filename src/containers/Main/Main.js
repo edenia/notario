@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
 import { Link as RouterLink, useLocation } from 'react-router-dom'
@@ -15,7 +16,11 @@ import Typography from '@material-ui/core/Typography'
 const useStyles = makeStyles((theme) => ({
   root: {
     paddingTop: theme.spacing(11),
-    display: 'flex'
+    display: 'flex',
+    [theme.breakpoints.up('lg')]: {
+      paddingRight: theme.spacing(32),
+      paddingLeft: theme.spacing(32)
+    }
   },
   appBar: {
     boxShadow: 'none',
@@ -63,6 +68,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const Main = ({ children, sidebarContent, topbarContent }) => {
+  const { t } = useTranslation('translations')
   const classes = useStyles()
   const theme = useTheme()
   const location = useLocation()
@@ -74,23 +80,17 @@ const Main = ({ children, sidebarContent, topbarContent }) => {
   const [openSidebar, setOpenSidebar] = useState(false)
 
   return (
-    <Container
-      component="main"
-      maxWidth="xl"
-      className={clsx({
-        [classes.root]: true
-      })}
-    >
+    <Container component="main" maxWidth="xl" className={classes.root}>
       <AppBar className={classes.appBar}>
         <Toolbar>
           <RouterLink to="/">
             {isResultPage ? (
               <Box className={classes.linkBox}>
                 <KeyboardBackspaceIcon />
-                <Typography variant="h3">Resultado</Typography>
+                <Typography variant="h3">{t('resultPage')}</Typography>
               </Box>
             ) : (
-              <Typography variant="h3">Notario Digital</Typography>
+              <Typography variant="h3">{t('mainTitle')}</Typography>
             )}
           </RouterLink>
           {topbarContent}

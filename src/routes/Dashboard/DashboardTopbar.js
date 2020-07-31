@@ -8,6 +8,8 @@ import LogoutIcon from '@material-ui/icons/ExitToApp'
 import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
 
+import LanguageSelector from '../../components/LanguageSelector'
+
 const useStyles = makeStyles((theme) => ({
   sessionText: {
     marginLeft: 5,
@@ -33,6 +35,7 @@ const DashboardTopbar = ({ user, onLogout, onLogin }) => {
 
   return (
     <Box className={classes.box}>
+      <LanguageSelector />
       {user && (
         <Box>
           <IconButton color="inherit">
