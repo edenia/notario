@@ -46,13 +46,12 @@ const CertifyModal = ({
       case 'file': {
         return (
           <DropzoneHash
-            useModal={false}
+            file={file}
+            deleteFile={() => setFile(null)}
             handleOnDropFile={(resultFile) => {
+              console.log(resultFile)
               setFile(resultFile)
             }}
-            customStyle={file ? {} : classes.dropBox}
-            dropZoneButtonText={t('notary.certifyModal.dropZoneButtonText')}
-            dropZoneText={t('notary.certifyModal.dropZoneText')}
           />
         )
       }

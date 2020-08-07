@@ -1237,10 +1237,10 @@
   resolved "https://registry.yarnpkg.com/@emotion/unitless/-/unitless-0.7.5.tgz#77211291c1900a700b8a78cfafda3160d76949ed"
   integrity sha512-OWORNpfjMsSSUBVrRBVGECkhWcULOAJz9ZW8uK9qgxD+87M7jHRcvh/A96XXNhXTLmKcoYSQtBEX7lHMO7YRwg==
 
-"@eoscostarica/eoscr-components@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.npmjs.org/@eoscostarica/eoscr-components/-/eoscr-components-1.2.0.tgz#0a352c2b5fb1f5d3f6f781d23628021d3d7a32bf"
-  integrity sha512-WX59brBUF+HwkrpfBKrn2SbAW+Ob8BUVQz5QdzXfCXgq+c9BRcm1MWfkQ0rzN1BKs1pf2yhHSrJRdQleP4Sw5A==
+"@eoscostarica/eoscr-components@^1.2.6":
+  version "1.2.6"
+  resolved "https://registry.npmjs.org/@eoscostarica/eoscr-components/-/eoscr-components-1.2.6.tgz#c62083a8bf5a2b55ed1b4d393430ca2f8462a7e9"
+  integrity sha512-YpsApfChXwXr4qfZWZ5dyq/nqbiT+5I3YFM7WoqpQr6shkVZrjFug2Z7enVb9TT+TdLJ3Q8jeEn9sc4xI5nLXQ==
   dependencies:
     "@eoscostarica/eoscr-theme" "^1.0.3"
     "@material-ui/core" "^4.10.2"
