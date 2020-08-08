@@ -42,6 +42,10 @@
         "paragraph": "Certificá datos ya sea en formato de texto o por medio de un archivo subido desde.",
         "paragraph2": "Se ha generado un hash para sus datos, proceda a registrarlo en el blockchain. Añada un título y comentario al certificado para brindar más información. Incluya el certificado en memoria (RAM) para más fácil acceso posteriormente. Este servicio tiene un costo adicional."
       },
+      "verifyIssuance": {
+        "selectVerificationMethod": "Seleccione el método de verificación",
+        "selectLabel": "Método"
+      },
       "cancelButton": "Cancelar",
       "acceptButton": "Validar",
       "sendButton": "Enviar"
