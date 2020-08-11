@@ -164,8 +164,6 @@ VerifyModal.propTypes = {
   setLoadingQr: PropTypes.func,
   loadingQr: PropTypes.bool,
   t: PropTypes.any,
-  setError: PropTypes.func,
-  error: PropTypes.object,
   onHandleVerify: PropTypes.func
 }
 
