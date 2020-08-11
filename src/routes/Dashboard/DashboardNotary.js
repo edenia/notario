@@ -22,6 +22,16 @@ const methods = [
     label: 'Text'
   }
 ]
+const verificationMethods = [
+  {
+    value: 'rawHash',
+    label: 'Entrada de texto'
+  },
+  {
+    value: 'uploadFile',
+    label: 'Cargar archivo'
+  }
+]
 
 const useStyles = makeStyles((theme) => ({
   wrapper: {
@@ -182,6 +192,7 @@ const Notary = ({ ual }) => {
   const [loading, setLoading] = useState(false)
   const [inputHashValue, setInputHashValue] = useState({ isValid: false })
   const [method, setMethod] = useState('')
+  const [verificationMethod, setVerificationMethod] = useState('')
   const [step, setStep] = useState(1)
   const [file, setFile] = useState(null)
   const [error, setError] = useState({
@@ -332,6 +343,9 @@ const Notary = ({ ual }) => {
 
         <VerifyModal
           classes={classes}
+          methods={verificationMethods}
+          verificationMethod={verificationMethod}
+          setVerificationMethod={setVerificationMethod}
           openVerifyModal={openVerifyModal}
           setOpenVerifyModal={setOpenVerifyModal}
           setInputHashValue={setInputHashValue}
