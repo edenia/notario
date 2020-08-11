@@ -131,7 +131,7 @@ const VerifyModal = ({
           </TextField>
 
           {getComponent(verificationMethod)}
-
+          <br />
           <Box className={classes.contentBtn}>
             <Button
               variant="outlined"
@@ -148,6 +148,7 @@ const VerifyModal = ({
               {t('notary.acceptButton')}
             </Button>
           </Box>
+          <br />
         </Box>
       </Box>
     </Modal>

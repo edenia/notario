@@ -251,6 +251,7 @@ const CertifyModal = ({
                   </Button>
                 </Box>
               )}
+              <br />
             </Box>
           </>
         )}
