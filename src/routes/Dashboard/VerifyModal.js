@@ -121,7 +121,6 @@ const VerifyModal = ({
             onChange={(e) => setVerificationMethod(e.target.value)}
             variant="outlined"
             fullWidth
-            disabled={error.isError}
           >
             {methods.map((option) => (
               <MenuItem key={option.value} value={option.value}>
