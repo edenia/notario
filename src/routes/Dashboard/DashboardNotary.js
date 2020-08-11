@@ -12,16 +12,6 @@ import AddIcon from '@material-ui/icons/Add'
 import VerifyModal from './VerifyModal'
 import CertifyModal from './CertifyModal'
 
-const methods = [
-  {
-    value: 'file',
-    label: 'Archivo'
-  },
-  {
-    value: 'text',
-    label: 'Text'
-  }
-]
 const verificationMethods = [
   {
     value: 'rawHash',
@@ -363,7 +353,7 @@ const Notary = ({ ual }) => {
           setOpenCertifyModal={setOpenCertifyModal}
           openCertifyModal={openCertifyModal}
           setMethod={setMethod}
-          methods={methods}
+          methods={verificationMethods}
           setFile={onHandleSetFile}
           file={file}
           onHandleSetDataForm={onHandleSetDataForm}

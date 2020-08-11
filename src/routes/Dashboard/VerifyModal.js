@@ -25,8 +25,6 @@ const VerifyModal = ({
   setLoadingQr,
   loadingQr,
   t,
-  setError,
-  error,
   onHandleVerify
 }) => {
   const getComponent = (verificationMethod) => {
@@ -124,7 +122,7 @@ const VerifyModal = ({
           >
             {methods.map((option) => (
               <MenuItem key={option.value} value={option.value}>
-                {option.label}
+                {t(`notary.verifyIssuance.${option.value}`)}
               </MenuItem>
             ))}
           </TextField>

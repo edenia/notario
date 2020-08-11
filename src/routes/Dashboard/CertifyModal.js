@@ -125,7 +125,7 @@ const CertifyModal = ({
                   >
                     {methods.map((option) => (
                       <MenuItem key={option.value} value={option.value}>
-                        {option.label}
+                        {t(`notary.verifyIssuance.${option.value}`)}
                       </MenuItem>
                     ))}
                   </TextField>
