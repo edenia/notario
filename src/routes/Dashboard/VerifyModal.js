@@ -25,8 +25,6 @@ const VerifyModal = ({
   setLoadingQr,
   loadingQr,
   t,
-  setError,
-  error,
   onHandleVerify
 }) => {
   const getComponent = (verificationMethod) => {
@@ -121,17 +119,16 @@ const VerifyModal = ({
             onChange={(e) => setVerificationMethod(e.target.value)}
             variant="outlined"
             fullWidth
-            disabled={error.isError}
           >
             {methods.map((option) => (
               <MenuItem key={option.value} value={option.value}>
-                {option.label}
+                {t(`notary.verifyIssuance.${option.value}`)}
               </MenuItem>
             ))}
           </TextField>
 
           {getComponent(verificationMethod)}
-
+          <br />
           <Box className={classes.contentBtn}>
             <Button
               variant="outlined"
@@ -148,6 +145,7 @@ const VerifyModal = ({
               {t('notary.acceptButton')}
             </Button>
           </Box>
+          <br />
         </Box>
       </Box>
     </Modal>
@@ -166,8 +164,6 @@ VerifyModal.propTypes = {
   setLoadingQr: PropTypes.func,
   loadingQr: PropTypes.bool,
   t: PropTypes.any,
-  setError: PropTypes.func,
-  error: PropTypes.object,
   onHandleVerify: PropTypes.func
 }
 

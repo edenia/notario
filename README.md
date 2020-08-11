@@ -8,14 +8,13 @@ The EOS CR Blockchain Notarizer allows you to generate a hash (SHA-256) of any f
 
 This is useful to since blockchain records are immutable, it allows users to prove that they had access to the original data ¨behind¨ that hash at a specific date and time.
 
-See our [ricardian clauses](./contracts/ricardian/) for more details. 
+See our [ricardian clauses](./contracts/ricardian/) for more details.
 
-We don’t keep any of the information you provide. 
+We don’t keep any of the information you provide.
 
 ## Version
 
 - 0.1.0
-
 
 ## Tech Stack
 
@@ -112,6 +111,8 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds
       <img src="https://avatars3.githubusercontent.com/u/10634375?s=460&v=4" width="100px;" alt="Teto Gomez"/><br /><sub><b>Teto Gomez</b></sub></a><br /><a href="https://github.com/eoscostarica/eosrate/commits?author=tetogomez" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/eoscostarica/eosrate/commits?author=tetogomez" title="Code">💻</a> <a href="#review-tetogomez" title="Reviewed Pull Requests">👀</a></td>
       <td align="center"><a href="https://github.com/adriexnet">
       <img src="https://avatars3.githubusercontent.com/u/5375168?s=460&u=542a27a00b761d98851991c6a6d5f78d7b35a2b2&v=4" width="100px;" alt="Adriel Diaz"/><br /><sub><b>Adriel Diaz</b></sub></a><br /><a href="https://github.com/eoscostarica/eosrate/commits?author=adriexnet" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/eoscostarica/eosrate/commits?author=adriexnet" title="Code">💻</a> <a href="#review-adriexnet" title="Reviewed Pull Requests">👀</a></td>
+      <td align="center"><a href="https://github.com/JustinCast">
+      <img src="https://avatars3.githubusercontent.com/u/17890146?s=460&u=0197507401898a33496ef4f1c2fccf6710748400&v=4" width="100px;" alt="JustinCast"/><br /><sub><b>JustinCast</b></sub></a><br /><a href="https://github.com/eoscostarica/notarioesocr/commits?author=JustinCast" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/eoscostarica/notarioeoscr/commits?author=JustinCast" title="Code">💻</a> <a href="#review-JustinCast" title="Reviewed Pull Requests">👀</a></td>
   </tr>
 </table>
 

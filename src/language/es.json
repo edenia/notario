@@ -44,6 +44,8 @@
       },
       "verifyIssuance": {
         "selectVerificationMethod": "Seleccione el método de verificación",
+        "uploadFile": "Cargar archivo",
+        "rawHash": "Entrada de texto",
         "selectLabel": "Método"
       },
       "cancelButton": "Cancelar",
