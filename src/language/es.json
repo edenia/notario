@@ -26,6 +26,21 @@
       "commentary": "Comentario",
       "details": "Detalles"
     },
+    "verificationDialog": {
+      "verificationDetailsSuccess": "Transacción verificada correctamente",
+      "verificationDetailsError": "La existencia de la transacción no ha podido ser verificada",
+      "transactionDetails": "Detalles de transacción",
+      "title": "Título:",
+      "user": "Usuario:",
+      "lastModification": "Última modificación:",
+      "verifying": "Verificando",
+      "verify": "Verificar",
+      "transactionId": "Id transacción:",
+      "queryTime": "Tiempo de consulta:",
+      "contractAccount": "Cuenta de contrato: ",
+      "viewInExplorer": "Ver en explorador",
+      "close": "Cerrar"
+    },
     "notary": {
       "text1": "Una herramienta creada para notariar documentos digitales en el blockchain.",
       "text2": "Certificá documentos nuevos o validá certificaciones previas.",

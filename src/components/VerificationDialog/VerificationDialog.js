@@ -15,6 +15,7 @@ import Typography from '@material-ui/core/Typography'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import styled from '@material-ui/core/styles/styled'
 import Paper from '@material-ui/core/Paper'
+import { useTranslation } from 'react-i18next'
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />
@@ -34,13 +35,14 @@ const MessagesBox = styled(Paper)({
 const VerificationDialog = ({ open, handleClose, txData }) => {
   const [verifying, setVerifying] = useState(false)
   const [verificationDetails, setVerificationDetails] = useState()
+  const { t } = useTranslation('translations')
   const verifyTransaction = (tx) => {
     setVerifying(true)
     rpc
       .history_get_transaction(tx)
       .then((x) => {
         setVerificationDetails({
-          content: `Transacción ${tx} verificada correctamente`,
+          content: t('verificationDialog.vererificationDetailsSuccess'),
           severity: 'success',
           block_num: x.block_num,
           id: x.id,
@@ -50,7 +52,7 @@ const VerificationDialog = ({ open, handleClose, txData }) => {
       })
       .catch(() => {
         setVerificationDetails({
-          content: `No se pudo verificar la existencia de la transacción ${tx}`,
+          content: t('verificationDialog.vererificationDetailsError'),
           severity: 'error'
         })
       })
@@ -68,17 +70,18 @@ const VerificationDialog = ({ open, handleClose, txData }) => {
       aria-labelledby="alert-dialog-slide-title"
       aria-describedby="alert-dialog-slide-description"
     >
-      <DialogTitle>Detalles de la transacción</DialogTitle>
+      <DialogTitle>{t('verificationDialog.transactionDetails')}</DialogTitle>
       <StyledDialogContent>
         <Box display="flex" flexDirection="column" justifyContent="start">
           <Typography>
-            <strong>Título:</strong> {txData.file}
+            <strong>{t('verificationDialog.title')}</strong> {txData.file}
           </Typography>
           <Typography>
-            <strong>Usuario:</strong> {txData.account}
+            <strong>{t('verificationDialog.user')}</strong> {txData.account}
           </Typography>
           <Typography>
-            <strong>Última modificación:</strong> {txData.lastModified}
+            <strong>{t('verificationDialog.lastModification')}</strong>{' '}
+            {txData.lastModified}
           </Typography>
           <Typography>
             <strong>Hash: </strong>
@@ -95,7 +98,9 @@ const VerificationDialog = ({ open, handleClose, txData }) => {
             color="primary"
             endIcon={<FindInPageIcon />}
           >
-            {verifying ? 'Verificando' : 'Verificar'}
+            {verifying
+              ? t('verificationDialog.verifying')
+              : t('verificationDialog.verify')}
             <>
               {verifying && (
                 <CircularProgress style={{ color: 'white' }} size={24} />
@@ -116,17 +121,19 @@ const VerificationDialog = ({ open, handleClose, txData }) => {
         {verificationDetails && verificationDetails.severity === 'success' && (
           <MessagesBox elevation={3}>
             <Typography>
-              <strong># bloque: </strong> {verificationDetails.block_num}
+              <strong>{t('registriesTable.blockNum')}:</strong>{' '}
+              {verificationDetails.block_num}
             </Typography>
             <Typography>
-              <strong>ID transacción: </strong> {verificationDetails.id}
+              <strong>{t('verificationDialog.transactionId')} </strong>{' '}
+              {verificationDetails.id}
             </Typography>
             <Typography>
-              <strong>Tiempo de consulta: </strong>
-              {verificationDetails.query_time} milisegundos
+              <strong>{t('verificationDialog.queryTime')} </strong>
+              {verificationDetails.query_time} ms
             </Typography>
             <Typography>
-              <strong>Cuenta del contrato: </strong>
+              <strong>{t('verificationDialog.contractAccount')} </strong>
               {verificationDetails.contract_account}
             </Typography>
             <Box
@@ -140,7 +147,7 @@ const VerificationDialog = ({ open, handleClose, txData }) => {
                   href={`https://jungle3.bloks.io/transaction/${verificationDetails.id}`}
                   target="_blank"
                 >
-                  Ver en explorador
+                  {t('verificationDialog.viewInExplorer')}
                 </Link>
               </Button>
             </Box>
@@ -152,7 +159,7 @@ const VerificationDialog = ({ open, handleClose, txData }) => {
       </StyledDialogContent>
       <DialogActions>
         <Button onClick={handleClose} color="primary">
-          Cerrar
+          {t('verificationDialog.close')}
         </Button>
       </DialogActions>
     </Dialog>

@@ -26,6 +26,21 @@
       "file": "File",
       "details": "Details"
     },
+    "verificationDialog": {
+      "verificationDetailsSuccess": "Transaction verified correctly",
+      "verificationDetailsError": "The existence of the transaction couldn't be verified",
+      "transactionDetails": "Transaction details",
+      "title": "Title:",
+      "user": "User:",
+      "lastModification": "Last modification:",
+      "verifying": "Verifying",
+      "verify": "Verify",
+      "transactionId": "Transaction id:",
+      "queryTime": "Query time:",
+      "contractAccount": "Contract account: ",
+      "viewInExplorer": "View in explorer",
+      "close": "Close"
+    },
     "notary": {
       "text1": "A tool created to notarize digital documents on the blockchain.",
       "text2": "Certify new documents or confirm previous certifications.",
