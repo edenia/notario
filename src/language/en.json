@@ -19,6 +19,13 @@
       "openModal": "Open Modal",
       "loadingInformation": "Loading Information"
     },
+    "registriesTable": {
+      "infoMsg": "Due to obtaining data directly from the blockchain, high bandwith consumption is expected",
+      "blockNum": "Block num",
+      "commentary": "Commentary",
+      "file": "File",
+      "details": "Details"
+    },
     "notary": {
       "text1": "A tool created to notarize digital documents on the blockchain.",
       "text2": "Certify new documents or confirm previous certifications.",

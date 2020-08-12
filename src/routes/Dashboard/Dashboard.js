@@ -8,6 +8,7 @@ import { MainContainer } from '../../containers'
 import DashboardSidebar from './DashboardSidebar'
 import DashboardTopbar from './DashboardTopbar'
 import DashboardMainPage from './DashboardNotary'
+import Registries from './DashboardRegistriesTable'
 import DashboardResult from './DashboardResult'
 
 const Dashboard = ({ ual }) => (
@@ -31,6 +32,9 @@ const Dashboard = ({ ual }) => (
       <Switch>
         <Route exact path="/dashboard/notary">
           <DashboardMainPage ual={ual} />
+        </Route>
+        <Route exact path="/dashboard/registries">
+          <Registries ual={ual} />
         </Route>
         <Route exact path="/dashboard/result">
           <DashboardResult ual={ual} />

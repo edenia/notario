@@ -19,6 +19,13 @@
       "openModal": "Abrir Modal",
       "loadingInformation": "Cargando la información"
     },
+    "registriesTable": {
+      "infoMsg": "Debido a la obtención de los datos directamente del blockchain, es previsible un alto consumo de ancho de banda",
+      "blockNum": "# bloque",
+      "file": "Archivo",
+      "commentary": "Comentario",
+      "details": "Detalles"
+    },
     "notary": {
       "text1": "Una herramienta creada para notariar documentos digitales en el blockchain.",
       "text2": "Certificá documentos nuevos o validá certificaciones previas.",

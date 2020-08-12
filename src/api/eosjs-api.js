@@ -5,7 +5,7 @@ import { TextEncoder, TextDecoder } from 'text-encoding'
 const signatureProvider = new JsSignatureProvider([])
 
 const rpc = new JsonRpc(
-  process.env.REACT_APP_EOS_API || 'https://jungle.eosio.cr'
+  process.env.REACT_APP_EOS_API || 'https://jungle.eosn.io'
 )
 const api = new Api({
   rpc,
