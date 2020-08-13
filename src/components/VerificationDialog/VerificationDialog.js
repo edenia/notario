@@ -61,8 +61,8 @@ const VerificationDialog = ({ open, handleClose, txData }) => {
 
   return (
     <Dialog
-      fullWidth={true}
-      maxWidth={'md'}
+      fullWidth
+      maxWidth="md"
       open={open}
       TransitionComponent={Transition}
       keepMounted
@@ -168,7 +168,7 @@ const VerificationDialog = ({ open, handleClose, txData }) => {
 
 VerificationDialog.propTypes = {
   open: PropTypes.bool,
-  handleCose: PropTypes.func,
+  handleClose: PropTypes.func,
   txData: PropTypes.object
 }
 

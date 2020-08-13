@@ -31,7 +31,7 @@ const RegistriesTable = () => {
   m.locale('es')
 
   const fetchTransactions = useCallback(
-    async (index_position, lowerbound) => {
+    async (indexPosition, lowerbound) => {
       const { rows } = await rpc.get_table_rows({
         json: true,
         code: 'notarioeoscr',
@@ -39,7 +39,7 @@ const RegistriesTable = () => {
         table: 'libro',
         limit: 10000,
         lower_bound: lowerbound,
-        index_position: index_position,
+        index_position: indexPosition,
         key_type: 'sha256'
       })
 
@@ -96,6 +96,7 @@ const RegistriesTable = () => {
           e.file,
           e.company,
           <IconButton
+            key={e.block_num}
             onClick={() => handleClickOpen(e)}
             aria-label="delete"
             size="medium"
