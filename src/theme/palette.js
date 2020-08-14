@@ -1,5 +1,6 @@
-import { colors } from '@material-ui/core'
 import { EOSCR_THEME } from '@eoscostarica/eoscr-theme'
+import { colors } from '@material-ui/core'
+
 const white = '#FFFFFF'
 const black = '#000000'
 

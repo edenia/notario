@@ -1,6 +1,6 @@
-import palette from './palette'
-
 import { EOSCR_THEME } from '@eoscostarica/eoscr-theme'
+
+import palette from './palette'
 
 export default {
   fontFamily: ["'PT Sans', sans-serif;", "'Open Sans', sans-serif;"].join(','),
