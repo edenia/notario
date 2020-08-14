@@ -17,7 +17,7 @@ import styled from '@material-ui/core/styles/styled'
 import Paper from '@material-ui/core/Paper'
 import { useTranslation } from 'react-i18next'
 
-const Transition = React.forwardRef(function Transition(props, ref) {
+const Transition = React.forwardRef((props, ref) => {
   return <Slide direction="up" ref={ref} {...props} />
 })
 
@@ -36,6 +36,7 @@ const VerificationDialog = ({ open, handleClose, txData }) => {
   const [verifying, setVerifying] = useState(false)
   const [verificationDetails, setVerificationDetails] = useState()
   const { t } = useTranslation('translations')
+
   const verifyTransaction = (tx) => {
     setVerifying(true)
     rpc
@@ -80,7 +81,7 @@ const VerificationDialog = ({ open, handleClose, txData }) => {
             <strong>{t('verificationDialog.user')}</strong> {txData.account}
           </Typography>
           <Typography>
-            <strong>{t('verificationDialog.lastModification')}</strong>{' '}
+            <strong>{t('verificationDialog.lastModification')}</strong>
             {txData.lastModified}
           </Typography>
           <Typography>
@@ -121,11 +122,11 @@ const VerificationDialog = ({ open, handleClose, txData }) => {
         {verificationDetails && verificationDetails.severity === 'success' && (
           <MessagesBox elevation={3}>
             <Typography>
-              <strong>{t('registriesTable.blockNum')}:</strong>{' '}
+              <strong>{t('registriesTable.blockNum')}:</strong>
               {verificationDetails.block_num}
             </Typography>
             <Typography>
-              <strong>{t('verificationDialog.transactionId')} </strong>{' '}
+              <strong>{t('verificationDialog.transactionId')} </strong>
               {verificationDetails.id}
             </Typography>
             <Typography>
