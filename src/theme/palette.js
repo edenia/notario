@@ -1,3 +1,4 @@
+import { EOSCR_THEME } from '@eoscostarica/eoscr-theme'
 import { colors } from '@material-ui/core'
 
 const white = '#FFFFFF'
@@ -7,46 +8,55 @@ export default {
   black,
   white,
   primary: {
-    main: '#212121',
-    light: '#757575',
-    contrastText: 'rgba(255, 255, 255, 1)',
-    800: '#424242',
-    700: '#616161',
-    600: '#757575',
-    500: '#9E9E9E',
-    400: '#BDBDBD',
-    300: '#E0E0E0',
-    200: '#EEEEEE',
-    100: '#F5F5F5',
-    50: '#FAFAFA',
-    onPrimaryHighEmphasizedText: 'rgba(255, 255, 255, 1)',
-    onPrimaryMediumEmphasizedText: 'rgba(255, 255, 255, 0.6)',
-    onPrimaryDisabledText: 'rgba(255, 255, 255, 0.38)',
-    highEmphasizedBlackText: 'rgba(0, 0, 0, 0.87)',
-    mediumEmphasizedBlackText: 'rgba(0, 0, 0, 0.6)',
-    disabledBlackText: 'rgba(0, 0, 0, 0.38)'
+    main: EOSCR_THEME.palette.primary.main,
+    light: EOSCR_THEME.palette.primary.light,
+    contrastText: EOSCR_THEME.palette.primary.contrastText,
+    800: EOSCR_THEME.palette.primary[800],
+    700: EOSCR_THEME.palette.primary[700],
+    600: EOSCR_THEME.palette.primary[600],
+    500: EOSCR_THEME.palette.primary[500],
+    400: EOSCR_THEME.palette.primary[400],
+    300: EOSCR_THEME.palette.primary[300],
+    200: EOSCR_THEME.palette.primary[200],
+    100: EOSCR_THEME.palette.primary[100],
+    50: EOSCR_THEME.palette.primary[50],
+    onPrimaryHighEmphasizedText:
+      EOSCR_THEME.palette.primary.onPrimaryHighEmphasizedText,
+    onPrimaryMediumEmphasizedText:
+      EOSCR_THEME.palette.primary.onPrimaryMediumEmphasizedText,
+    onPrimaryDisabledText: EOSCR_THEME.palette.primary.onPrimaryDisabledText,
+    highEmphasizedBlackText:
+      EOSCR_THEME.palette.primary.highEmphasizedBlackText,
+    mediumEmphasizedBlackText:
+      EOSCR_THEME.palette.primary.mediumEmphasizedBlackText,
+    disabledBlackText: EOSCR_THEME.palette.primary.disabledBlackText
   },
   secondary: {
-    main: '#3EBBD3',
-    light: '#5ECFE2',
-    dark: '#39ABC0',
-    contrastText: 'rgba(0, 0, 0, 0.87)',
-    900: '#265F63',
-    800: '#2F828E',
-    700: '#3496A6',
-    600: '#39ABC0',
-    500: '#3EBBD3',
-    400: '#47C5DA',
-    300: '#5ECFE2',
-    200: '#88DDEB',
-    100: '#B6EBF3',
-    50: '#E1F7FA',
-    onSecondaryHighEmphasizedText: 'rgba(0, 0, 0, 0.87)',
-    onSecondaryMediumEmphasizedText: 'rgba(0, 0, 0, 0.6)',
-    onSecondaryDisabledText: 'rgba(0, 0, 0, 0.38)',
-    highEmphasizedWhiteText: 'rgba(255, 255, 255, 1)',
-    mediumEmphasizedWhiteText: 'rgba(255, 255, 255, 0.6)',
-    disabledWhiteText: 'rgba(255, 255, 255, 0.38)'
+    main: EOSCR_THEME.palette.secondary.main,
+    light: EOSCR_THEME.palette.secondary.light,
+    dark: EOSCR_THEME.palette.secondary.dark,
+    contrastText: EOSCR_THEME.palette.secondary.contrastText,
+    900: EOSCR_THEME.palette.secondary[900],
+    800: EOSCR_THEME.palette.secondary[800],
+    700: EOSCR_THEME.palette.secondary[700],
+    600: EOSCR_THEME.palette.secondary[600],
+    500: EOSCR_THEME.palette.secondary[500],
+    400: EOSCR_THEME.palette.secondary[400],
+    300: EOSCR_THEME.palette.secondary[300],
+    200: EOSCR_THEME.palette.secondary[200],
+    100: EOSCR_THEME.palette.secondary[100],
+    50: EOSCR_THEME.palette.secondary[50],
+    onSecondaryHighEmphasizedText:
+      EOSCR_THEME.palette.secondary.onSecondaryHighEmphasizedText,
+    onSecondaryMediumEmphasizedText:
+      EOSCR_THEME.palette.secondary.onSecondaryMediumEmphasizedText,
+    onSecondaryDisabledText:
+      EOSCR_THEME.palette.secondary.onSecondaryDisabledText,
+    highEmphasizedWhiteText:
+      EOSCR_THEME.palette.secondary.highEmphasizedWhiteText,
+    mediumEmphasizedWhiteText:
+      EOSCR_THEME.palette.secondary.mediumEmphasizedWhiteText,
+    disabledWhiteText: EOSCR_THEME.palette.secondary.disabledWhiteText
   },
   success: {
     contrastText: white,

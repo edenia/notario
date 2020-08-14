@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, forwardRef } from 'react'
 import Button from '@material-ui/core/Button'
 import Dialog from '@material-ui/core/Dialog'
 import Link from '@material-ui/core/Link'
@@ -17,7 +17,7 @@ import styled from '@material-ui/core/styles/styled'
 import Paper from '@material-ui/core/Paper'
 import { useTranslation } from 'react-i18next'
 
-const Transition = React.forwardRef((props, ref) => {
+const Transition = forwardRef((props, ref) => {
   return <Slide direction="up" ref={ref} {...props} />
 })
 
