@@ -1,8 +1,8 @@
-#include <notarioeoscr.hpp>
+#include <notario.hpp>
 #include <eosio/transaction.hpp>
 #include <eosio/crypto.hpp>
 
-ACTION notarioeoscr::anotar(name usuario, const checksum256 &hash, bool guardar_en_tabla, string titulo, string contenido, string comentario)
+ACTION notario::anotar(name usuario, const checksum256 &hash, bool guardar_en_tabla, string titulo, string contenido, string comentario)
 {
   require_auth(usuario);
   if (!guardar_en_tabla)
@@ -28,7 +28,7 @@ ACTION notarioeoscr::anotar(name usuario, const checksum256 &hash, bool guardar_
   });
 }
 
-ACTION notarioeoscr::limpiar()
+ACTION notario::limpiar()
 {
   // DEV only
   require_auth(get_self());
@@ -42,4 +42,4 @@ ACTION notarioeoscr::limpiar()
   }
 }
 
-EOSIO_DISPATCH(notarioeoscr, (anotar)(limpiar))
+EOSIO_DISPATCH(notario, (anotar)(limpiar))

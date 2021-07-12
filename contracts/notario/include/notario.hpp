@@ -3,7 +3,7 @@
 using namespace std;
 using namespace eosio;
 
-CONTRACT notarioeoscr : public contract
+CONTRACT notario : public contract
 {
 public:
   using contract::contract;

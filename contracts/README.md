@@ -8,7 +8,7 @@ También permite a cualquier persona que posea el documento validar el registro 
 
 Pueden accesar el Zeplin scene aquí: https://scene.zeplin.io/project/5ea8f7f46cfde425751bc5ec
 
-# NOTARIOEOSCR
+# NOTARIO
 
 ## Acción - `{{ anotar }}`
 
@@ -53,13 +53,17 @@ Tabla que contiene aquellos registros que están disponibles en RAM.
 ## Compilación
 
 ```
-eosio-cpp -abigen ./src/notarioeoscr.cpp -o notarioeoscr.wasm -I ./include/ -R ./ricardian
+eosio-cpp -abigen ./src/notario.cpp -o notario.wasm -I ./include/ -R ./ricardian
 ```
 
-## Subir el contrato al Jungle Testnet
+## Subir el contrato a LACChain EOSIO
 
-`cleos -u https://jungle.eosio.cr set contract notarioeoscr ./ -p notarioeoscr@active`
+Existe un archivo dentro de la carpeta de `contracts/scripts/` llamado `notario.sh`, asegurese de que el archivo tenga los privilegios `chmod 755` para realizar la subida del contrato de manera exitosa. Para ejecutar este archivo use el siguiente comando:
 
-## Creditos
+```
+sudo ./notario.sh
+```
+
+## Créditos
 
 Este contrato esta basado en [EOS Proof of Existence](https://github.com/EOSArgentina/eosproofio) publicado por [EOS Argentina](https://www.eosargentina.io/)
