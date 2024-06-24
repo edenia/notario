@@ -1,49 +1,49 @@
 {
   "translations": {
-    "login": "Iniciar sesión",
-    "logout": "Salir",
-    "mainTitle": "Notario Digital - Registros en Blockchain",
+    "login": "Iniciar Sesión",
+    "logout": "Cerrar Sesión",
+    "mainTitle": "Notario Digital para Certificaciones Blockchain - Edenia",
     "resultPage": "Resultados",
     "back": "Regresar",
     "message": "Mensaje",
     "result": {
-      "defaultTitle": "Sin Titulo",
+      "defaultTitle": "Sin Título",
       "hashTitle": "Hash del Certificado",
       "date": "Fecha y Hora",
       "account": "Cuenta Escritora",
       "titleInfo": "Título",
       "comment": "Comentario",
       "idInfo": "ID de Transacción",
-      "qrMessage": "Escanéa este código QR con la cámara de tu móvil para copiar el hash fácilmente.",
+      "qrMessage": "Escanee este código QR con la cámara de su dispositivo móvil para copiar el hash fácilmente.",
       "downloadButton": "Descargar en PDF",
       "openModal": "Abrir Modal",
-      "loadingInformation": "Cargando la información"
+      "loadingInformation": "Cargando la Información"
     },
     "registriesTable": {
-      "infoMsg": "Debido a la obtención de los datos directamente del blockchain, es previsible un alto consumo de ancho de banda",
-      "blockNum": "# bloque",
+      "infoMsg": "Debido a la obtención de los datos directamente del blockchain, es previsible un alto consumo de ancho de banda.",
+      "blockNum": "# Bloque",
       "file": "Archivo",
       "commentary": "Comentario",
       "details": "Detalles"
     },
     "verificationDialog": {
-      "verificationDetailsSuccess": "Transacción verificada correctamente",
-      "verificationDetailsError": "La existencia de la transacción no ha podido ser verificada",
-      "transactionDetails": "Detalles de transacción",
+      "verificationDetailsSuccess": "Transacción verificada correctamente.",
+      "verificationDetailsError": "No se ha podido verificar la existencia de la transacción.",
+      "transactionDetails": "Detalles de la Transacción",
       "title": "Título:",
       "user": "Usuario:",
-      "lastModification": "Última modificación:",
+      "lastModification": "Última Modificación:",
       "verifying": "Verificando",
       "verify": "Verificar",
-      "transactionId": "Id transacción:",
-      "queryTime": "Tiempo de consulta:",
-      "contractAccount": "Cuenta de contrato: ",
-      "viewInExplorer": "Ver en explorador",
+      "transactionId": "ID de la Transacción:",
+      "queryTime": "Tiempo de Consulta:",
+      "contractAccount": "Cuenta del Contrato:",
+      "viewInExplorer": "Ver en Explorador",
       "close": "Cerrar"
     },
     "notary": {
       "text1": "Una herramienta creada para notariar documentos digitales en el blockchain.",
-      "text2": "Certificá documentos nuevos o validá certificaciones previas.",
+      "text2": "Certifique documentos nuevos o valide certificaciones previas.",
       "certifyButton": "Certificar Datos",
       "verifyButton": "Validar Certificados",
       "verifyModal": {
@@ -54,20 +54,20 @@
         "messageSuccess": "Hash Válido"
       },
       "certifyModal": {
-        "selectLegend": "Seleccioná el método de certificado",
+        "selectLegend": "Seleccione el método de certificación",
         "selectLabel": "Método",
         "dropZoneButtonText": "Buscar Archivo",
-        "dropZoneText": "Arrastrá y Soltá el Archivo Aquí",
+        "dropZoneText": "Arrastre y Suelte el Archivo Aquí",
         "title": "Paso 1 de 2: Envío de Datos",
         "title2": "Paso 2 de 2: Registro en Blockchain",
         "inputCheck": "Guardar en memoria (RAM)",
-        "paragraph": "Certificá datos ya sea en formato de texto o por medio de un archivo subido desde.",
-        "paragraph2": "Se ha generado un hash para sus datos, proceda a registrarlo en el blockchain. Añada un título y comentario al certificado para brindar más información. Incluya el certificado en memoria (RAM) para más fácil acceso posteriormente. Este servicio tiene un costo adicional."
+        "paragraph": "Certifique datos ya sea en formato de texto o por medio de un archivo subido.",
+        "paragraph2": "Se ha generado un hash para sus datos, proceda a registrarlo en el blockchain. Añada un título y comentario al certificado para brindar más información. Incluya el certificado en memoria (RAM) para un acceso más fácil posteriormente. Este servicio tiene un costo adicional."
       },
       "verifyIssuance": {
         "selectVerificationMethod": "Seleccione el método de verificación",
-        "uploadFile": "Cargar archivo",
-        "rawHash": "Entrada de texto",
+        "uploadFile": "Cargar Archivo",
+        "rawHash": "Entrada de Texto",
         "selectLabel": "Método"
       },
       "cancelButton": "Cancelar",
