@@ -92,11 +92,11 @@ eoscrwebappboilerplate/
 
 ## License
 
-MIT © [EOS Costa Rica](https://eoscostarica.io)
+MIT © [Edenia](https://eoscostarica.io)
 
 ## Contributing
 
-Please Read EOS Costa Rica's [Open Source Contributing Guidelines](https://developers.eoscostarica.io/docs/open-source-guidelines).
+Please Read Edenia's [Open Source Contributing Guidelines](https://developers.eoscostarica.io/docs/open-source-guidelines).
 
 Please report bugs big and small by [opening an issue](https://github.com/eoscostarica/webapp-boilerplate/issues)
 
@@ -118,7 +118,7 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds
 
 This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!
 
-## About EOS Costa Rica
+## About Edenia
 
 <p align="center">
 	<a href="https://eoscostarica.io">
@@ -127,6 +127,6 @@ This project follows the [all-contributors](https://github.com/kentcdodds/all-co
 </p>
 <br/>
 
-EOS Costa Rica is an independently-owned, self-funded, bare-metal Genesis block producer that provides stable and secure infrastructure for EOSIO blockchains. We support open source software for our community while offering enterprise solutions and custom smart contract development for our clients.
+Edenia is an independently-owned, self-funded, bare-metal Genesis block producer that provides stable and secure infrastructure for EOSIO blockchains. We support open source software for our community while offering enterprise solutions and custom smart contract development for our clients.
 
 [eoscostarica.io](https://eoscostarica.io)
