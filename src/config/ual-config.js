@@ -5,14 +5,14 @@ import { TokenPocket } from 'ual-token-pocket'
 import { MeetOne } from 'ual-meetone'
 import { Anchor } from 'ual-anchor'
 
-const appName = 'eoscrnotarize'
+const appName = 'notarioeoscr'
 const network = {
-  chainId: '2a02a0053e5a8cf73a56ba0fda11e4d92e0238a4a2aa74fccf46d5a910746840',
+  chainId: '73e4385a2708e6d7048834fbc1079f2fabb17b3c125b146af438971e90716c4d',
   rpcEndpoints: [
     {
       blockchain: 'eos',
       protocol: 'https',
-      host: 'jungle.eosio.cr',
+      host: 'jungle.eosusa.io',
       port: parseInt('443')
     }
   ]
